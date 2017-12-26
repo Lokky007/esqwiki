@@ -4,14 +4,22 @@
     <input type="submit" value="Submit" />
 </form>
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 {% block content %}
     {% if not board_records %}
             <strong>Žádné záznamy</strong>
     {% else %}
         {% for record in board_records %}
             <p>{{ record.id_board_post }}{{ record.x_created }}{{ record.text }} {{ record.x_user_id }}</p>
-            <button type="submit" name={{  record.id_board_post }} value="delete">Odpovědět</button>
-            <button type="submit" name={{  record.id_board_post }} value="delete">smazat</button>
+            <a href="#">Odpovědět</a>
+            <a href="/board/delete/{{ record.id_board_post }}">delete</a>
         {% endfor %}
     {% endif %}
 {% endblock %}

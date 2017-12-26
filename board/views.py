@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib import messages
+from django.shortcuts import redirect
 from board.models import posts
 from forms import BoardNewPost
 
@@ -20,8 +24,11 @@ def index(request):
                       'board_new_post': board_new_post
                   })
 
-def delete_post(request):
-    if request.method == 'POST':
-        t = posts.objects.get(id=1)
-        t.value = 999  # change field
+
+def delete_post(request, id_post):
+    if request.method == 'GET':
+        t = posts.objects.get(id_board_post=id_post)
+        t.deleted = 1
         t.save()
+        messages.success(request, 'Smazání proběhlo úspěšně.')
+    return redirect('/board/')
