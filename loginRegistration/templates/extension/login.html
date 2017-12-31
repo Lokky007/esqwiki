@@ -1,0 +1,14 @@
+<!-- login.html -->
+{% extends "baseLoginRegistration.html" %}
+{% block title %}Přihlášení{% endblock %}
+{% block head %}Přihlášení{% endblock %}
+{% block content %}
+
+    <form class="form" method="post" action="" >{% csrf_token %}
+            {{ loginForm }}
+        <button type="submit"  value="Login" id="login-button">Přihlásit</button>
+        <button type="button" onclick="window.location.href='/registration/' ">Registrovat</button>
+        <input type="hidden" name="next" value="/home" />
+    </form>
+
+{% endblock %}
