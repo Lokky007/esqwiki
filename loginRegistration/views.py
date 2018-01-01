@@ -34,7 +34,7 @@ def Register(request):
         email = form.cleaned_data.get("user_email")
 
         user = User.objects.create_user(username, email, password, last_name=lname, first_name=fname)
-        return render(request, 'polls/registration/success.html', {"username": username})
+        return render(request, 'extension/registrationSuccess.html', {"username": username})
 
     return render(request, 'extension/registration.html', {"form": form})
 
