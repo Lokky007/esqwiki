@@ -1,25 +1,31 @@
-<form action="" method="post">
-    {% csrf_token %}
-    {{ board_new_post }}
-    <input type="submit" value="Submit" />
-</form>
-
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
-    {% if not board_records %}
-            <strong>Žádné záznamy</strong>
-    {% else %}
-        {% for record in board_records %}
-            <p>{{ record.id_board_post }}{{ record.x_created }}{{ record.text }} {{ record.x_user_id }}</p>
-            <a href="#">Odpovědět</a>
-            <a href="/board/delete/{{ record.id_board_post }}">delete</a>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ board_new_post }}
+        <input type="submit" value="Submit" />
+    </form>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
+    </ul>
     {% endif %}
+
+    {% block records %}
+        {% if not board_records %}
+                <strong>Žádné záznamy</strong>
+        {% else %}
+            {% for record in board_records %}
+                <p>{{ record.id_board_post }}{{ record.x_created }}{{ record.text }} {{ record.x_user_id }}</p>
+                <a href="#">Odpovědět</a>
+                <a href="/board/delete/{{ record.id_board_post }}">delete</a>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
 {% endblock %}
