@@ -12,7 +12,9 @@
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <div class="alert alert-success" role="alert">
+                <div class="board_delete_record"><span class="{{ message.tags }}" ><b>{{ message }}</b></span></div>
+            </div>
         {% endfor %}
     </ul>
     {% endif %}
@@ -22,9 +24,12 @@
                 <strong>Žádné záznamy</strong>
         {% else %}
             {% for record in board_records %}
-                <p>{{ record.id_board_post }}{{ record.x_created }}{{ record.text }} {{ record.x_user_id }}</p>
-                <a href="#">Odpovědět</a>
-                <a href="/board/delete/{{ record.id_board_post }}">delete</a>
+                <div class="board_content_record" id="{{ record.id_board_post }}_board_content_record">
+                    <p>#{{ record.id_board_post }}{{ record.x_created }} {{ record.x_user_id }}</p>
+                    <b>{{ record.text }}</b>
+                    <a href="#">Odpovědět</a>
+                    <a href="/board/delete/{{ record.id_board_post }}">delete</a>
+                </div>
             {% endfor %}
         {% endif %}
     {% endblock %}
