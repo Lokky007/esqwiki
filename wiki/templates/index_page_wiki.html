@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% if not wiki_content %}
+
+            <ul>
+                <li><a href="/wiki/blacksmithy/">Kovarstvi</a></li>
+                <li><a href="/wiki/alchemy/">Alchymie</a></li>
+                <li><a href="/wiki/engeneering/">Rezbarstvi</a></li>
+                <li><a href="/wiki/tailoring/">Krejcovstvi</a></li>
+            </ul>
+
+    {% else %}
+
+            {% for wiki_record in wiki_content %}
+                <div class="wik_record_row">
+                    <div class="wiki_record_name">{{ wiki_record.name }}</div>
+                </div>
+            {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

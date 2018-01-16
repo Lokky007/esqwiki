@@ -11,4 +11,5 @@ urlpatterns = [
 
     url('main/', include("main.urls"), name='main'),
     url('board/', include("board.urls"), name='board'),
+    url('wiki/', include("wiki.urls"), name='wiki'),
 ]

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.contrib import messages
 from django.shortcuts import redirect
 from board.models import posts
