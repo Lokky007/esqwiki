@@ -11,10 +11,10 @@ def get_image_path(instance, filename):
 
 class WikiItem(models.Model):
     id_wikiItem = models.AutoField(primary_key=True)
-    id_map_coordinate = models.IntegerField(default=None)
+    id_map_coordinate = models.IntegerField(default=None, blank=True, null=True)
     name = models.CharField(max_length=128)
     unique_item = models.BooleanField(default=0)
-    comment = models.CharField(max_length=2048)
+    comment = models.CharField(max_length=2048, blank=True, null=True)
     deleted = models.BooleanField(default=0)
     image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
     x_created = models.DateTimeField(auto_now_add=True)
