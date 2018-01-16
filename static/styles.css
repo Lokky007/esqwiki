@@ -9,7 +9,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   font-weight: 300;
-  background-image: url("background_image.jpg");
+   background-image: url("background_image.jpg");
 
 }
 body ::-webkit-input-placeholder {

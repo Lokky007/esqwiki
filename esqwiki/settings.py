@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'wiki.apps.WikiConfig',
     'board.apps.BoardConfig',
     'main.apps.MainConfig',
     'loginRegistration.apps.LoginregistrationConfig',
