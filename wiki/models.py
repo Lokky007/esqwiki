@@ -9,9 +9,18 @@ def get_image_path(instance, filename):
     return os.path.join('image', str(instance.id), filename)
 
 
+class WikiCraftProductType(models.Model):
+    id_wikiCraftProductType = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=64)
+    x_created = models.DateTimeField(auto_now_add=True)
+    x_modified = models.DateTimeField(auto_now=True)
+    x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+
 class WikiItem(models.Model):
     id_wikiItem = models.AutoField(primary_key=True)
     id_map_coordinate = models.IntegerField(default=None, blank=True, null=True)
+    id_wikiCraftProductType = models.ForeignKey(WikiCraftProductType, blank=True, null=True)
     name = models.CharField(max_length=128)
     unique_item = models.BooleanField(default=0)
     comment = models.CharField(max_length=2048, blank=True, null=True)
@@ -22,12 +31,6 @@ class WikiItem(models.Model):
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 
-class WikiCraftProductType(models.Model):
-    id_wikiCraftProductType = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=64)
-    x_created = models.DateTimeField(auto_now_add=True)
-    x_modified = models.DateTimeField(auto_now=True)
-    x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 """
 class WikiProductItem(models.Model):

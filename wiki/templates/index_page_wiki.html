@@ -5,6 +5,7 @@
     {% if not wiki_content %}
 
             <ul>
+                <li><a href="/wiki/items/">Suroviny</a></li>
                 <li><a href="/wiki/blacksmithy/">Kovarstvi</a></li>
                 <li><a href="/wiki/alchemy/">Alchymie</a></li>
                 <li><a href="/wiki/engeneering/">Rezbarstvi</a></li>
@@ -15,7 +16,9 @@
 
             {% for wiki_record in wiki_content %}
                 <div class="wik_record_row">
-                    <div class="wiki_record_name">{{ wiki_record.name }}</div>
+                    <div class="wiki_record_name">Název: {{ wiki_record.name }}</div>
+                    <div class="wiki_record_coordinates">Koordináty: {{ wiki_record.id_map_coordinate }}</div>
+                    <div class="wiki_record_coordinates">Typ: {{ wiki_record.id_wikiCraftProductType }}</div>
                 </div>
             {% endfor %}
 

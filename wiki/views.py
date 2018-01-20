@@ -1,11 +1,17 @@
 from django.shortcuts import render
-from django.shortcuts import render_to_response
+from wiki.models import WikiItem
 
 # Create your views here.
 
 
 def index(request):
     return render(request, 'index_page_wiki.html')
+
+
+def items(request):
+    records = WikiItem.objects.filter(deleted=0).order_by('name')
+
+    return render(request, 'index_page_wiki.html', {'wiki_content': records})
 
 
 def blacksmithy(request):

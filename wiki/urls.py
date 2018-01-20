@@ -4,6 +4,7 @@ from wiki import views
 
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'items/$', views.items, name='wiki'),
     url(r'blacksmithy/$', views.blacksmithy, name='wiki'),
     url(r'alchemy/$', views.alchemy, name='wiki'),
     url(r'tailoring/$', views.tailoring, name='wiki'),
