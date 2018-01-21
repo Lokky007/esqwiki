@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from wiki.models import WikiItem
+from wiki.models import WikiItem, WikiCraftProduct
 
 # Create your views here.
 
@@ -10,21 +10,24 @@ def index(request):
 
 def items(request):
     records = WikiItem.objects.filter(deleted=0).order_by('name')
-
     return render(request, 'index_page_wiki.html', {'wiki_content': records})
 
 
 def blacksmithy(request):
-    return render(request, 'index_page_wiki.html', {'wiki_content': 'blacksmithy'})
+    records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=1).order_by('name')
+    return render(request, 'index_page_wiki.html', {'wiki_content': records})
 
 
 def alchemy(request):
-    return render(request, 'index_page_wiki.html', {'wiki_content': 'alchemy'})
+    records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=2).order_by('name')
+    return render(request, 'index_page_wiki.html', {'wiki_content': records})
 
 
 def tailoring(request):
-    return render(request, 'index_page_wiki.html', {'wiki_content': 'tailoring'})
+    records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=3).order_by('name')
+    return render(request, 'index_page_wiki.html', {'wiki_content': records})
 
 
 def engeneering(request):
-    return render(request, 'index_page_wiki.html', {'wiki_content': 'engeneering'})
+    records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=4).order_by('name')
+    return render(request, 'index_page_wiki.html', {'wiki_content': records})

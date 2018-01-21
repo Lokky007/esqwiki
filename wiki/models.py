@@ -49,6 +49,7 @@ class WikiCraftProduct(models.Model):
     id_wikiItem = models.ManyToManyField(WikiItem)
    # id_wikiProductItem = models.ForeignKey(WikiProductItem, blank=True, null=True)
     id_wikiCraftProductType = models.ForeignKey(WikiCraftProductType, blank=True, null=True)
+    name = models.CharField(max_length=128)
     comment = models.CharField(max_length=2048)
     count = models.IntegerField(default=1)
     image = models.ImageField(upload_to=get_image_path, blank=True, null=True)

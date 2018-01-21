@@ -54,3 +54,41 @@ body :-ms-input-placeholder {
     text-align:  center;
 }
 
+.wiki_type_item
+{
+    border: 2px solid black;
+    border-radius: 6px;
+    width: 200px;
+    background: rgba(10, 8, 8, 0.5);
+    padding: 220px 10px 10px;
+    float: left;
+    margin-left: 23px;
+}
+
+.items_left_content
+{
+    float: left;
+    width: 60%;
+}
+
+.items_right_content{
+    float: left;
+    width: 35%;
+}
+
+.items_right_content_fixed
+{
+
+    height: 80%;
+    width: 23%;
+    border: 2px solid black;
+    border-radius: 6px;
+    background: rgba(10, 8, 8, 0.5);
+    padding: 620px 10px 10px;
+    text-align: center;
+    margin-left: 23px;
+    color: white;
+    position: fixed;
+        background-color: #13111199;
+    box-shadow: 6px 5px #13111159;
+}

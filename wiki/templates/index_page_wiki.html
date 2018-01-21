@@ -4,23 +4,32 @@
 {% block content %}
     {% if not wiki_content %}
 
-            <ul>
-                <li><a href="/wiki/items/">Suroviny</a></li>
-                <li><a href="/wiki/blacksmithy/">Kovarstvi</a></li>
-                <li><a href="/wiki/alchemy/">Alchymie</a></li>
-                <li><a href="/wiki/engeneering/">Rezbarstvi</a></li>
-                <li><a href="/wiki/tailoring/">Krejcovstvi</a></li>
-            </ul>
+            <div class="wiki_type_content_overview">
+                <a href="/wiki/items/"><div class="wiki_type_item">Suroviny</div></a>
+                <a href="/wiki/blacksmithy/"><div class="wiki_type_item">Kovarstvi</div></a>
+                <a href="/wiki/alchemy/"><div class="wiki_type_item">Alchymie</div></a>
+                <a href="/wiki/engeneering/"><div class="wiki_type_item">Rezbarstvi</div></a>
+                <a href="/wiki/tailoring/"><div class="wiki_type_item">Krejcovstvi</div></a>
+            </div>
 
     {% else %}
 
-            {% for wiki_record in wiki_content %}
-                <div class="wik_record_row">
-                    <div class="wiki_record_name">Název: {{ wiki_record.name }}</div>
-                    <div class="wiki_record_coordinates">Koordináty: {{ wiki_record.id_map_coordinate }}</div>
-                    <div class="wiki_record_coordinates">Typ: {{ wiki_record.id_wikiCraftProductType }}</div>
+            <div class="items_left_content">
+                {% for wiki_record in wiki_content %}
+                    <div class="wik_record_row">
+                        <div class="wiki_record_name">Název: {{ wiki_record.name }}</div>
+                        <div class="wiki_record_coordinates">Koordináty: {{ wiki_record.id_map_coordinate }}</div>
+                        <div class="wiki_record_coordinates">Typ: {{ wiki_record.id_wikiCraftProductType }}</div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="items_right_content">
+                <div class="items_right_content_fixed">
+                    Náhled
                 </div>
-            {% endfor %}
+            </div>
 
     {% endif %}
 
