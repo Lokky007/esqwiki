@@ -16,10 +16,12 @@
 
             <div class="items_left_content">
                 {% for wiki_record in wiki_content %}
-                    <div class="wik_record_row">
+                    <div class="wiki_record_row" id="{{ wiki_record.id_wikiItem }}" name="{{ wiki_record.id_wikiCraftProductType.id_wikiCraftProductType }}">
                         <div class="wiki_record_name">Název: {{ wiki_record.name }}</div>
+                        {% if  wiki_record.id_map_coordinate %}
                         <div class="wiki_record_coordinates">Koordináty: {{ wiki_record.id_map_coordinate }}</div>
-                        <div class="wiki_record_coordinates">Typ: {{ wiki_record.id_wikiCraftProductType }}</div>
+                        {% endif %}
+                        <div class="wiki_record_coordinates">Typ: {{  wiki_record.id_wikiCraftProductType.name }}</div>
                     </div>
                 {% endfor %}
 
@@ -32,5 +34,34 @@
             </div>
 
     {% endif %}
+<script type="text/javascript">
+$(function () {
+    $('.wiki_record_row').on('click', function () {
+        var record_id = $(this).attr('id');
+        var wiki_record_type_id = $(this).attr('name');
+        $('.ajaxProgress').show();
+    $.ajax({
+                type:  "POST",
+                dataType: "json",
+                async: true,
+                url: '/wiki/items_preview/',
+        data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+             record_id: record_id
+        },
 
+                success: function (json) {
+                    $('.items_right_content_fixed').html(json.message);
+                    $('.ajaxProgress').hide()
+                }
+            }
+    )
+})
+})
+
+</script>
 {% endblock %}
+        #data: {
+            wiki_record_id: record_id,
+            wiki_record_type_id: wiki_record_type_id
+        }
