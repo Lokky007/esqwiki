@@ -19,6 +19,7 @@ def items(request):
 def items_preview(request):
     return content_for_dynamic_preview(request)
 
+
 def blacksmithy(request):
     records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=1).order_by('name')
     return render(request, 'index_page_wiki.html', {'wiki_content': records})

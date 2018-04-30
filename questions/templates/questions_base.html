@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ questions_new_post }}
+            <input type="submit" value="Submit" />
+        </form>
+   {% endif %}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <div class="board_delete_record"><span class="{{ message.tags }}" ><b>{{ message }}</b></span></div>
+            </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% block records %}
+        {% if not quetions_records %}
+                <strong>Žádné záznamy</strong>
+        {% else %}
+            {% for record in questions_records %}
+                <div class="board_content_record" id="{{ record.id_board_post }}_board_content_record">
+                    <p>{{ record.x_created|date:'H:i j.n Y' }} {{ record.x_user.username  }}</p>
+                    <b>{{ record.text }}</b>
+                    {% if user.is_authenticated %}
+                        <div class="">
+                            <a href="#">Odpovědět</a>
+                            <a href="/board/delete/{{ record.id_board_post }}">delete</a>
+                            <a href="#">Zpráva</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

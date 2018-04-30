@@ -1,0 +1,31 @@
+{% block content %}
+    <div class="item_detail_content height_100_proc">
+
+        <div  class="item_detail_top">
+            <img src="{{ item_data.image }}">
+        </div>
+
+        <div  class="item_detail_bottom">
+            <div class="line_50_opac_grey"></div>
+            <div class="padding_top_10">
+
+
+                            <div class="padding_top_10 text-align_center">{{ item_data.name }}</div>
+
+                        {% if  item_data.id_map_coordinate %}
+                            <div class="padding_top_10">Koordináty: {{ item_data.id_map_coordinate }}</div>
+                        {% endif %}
+
+                        {% if  item_data.name %}
+                            <div class="padding_top_10">Typ: {{  item_data.id_wikiCraftProductType.name }}</div>
+                        {% endif %}
+
+                        {% if  item_data.comment %}
+                            <div class="padding_top_10">Poznámka: {{  item_data.comment }}</div>
+                        {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock%}
