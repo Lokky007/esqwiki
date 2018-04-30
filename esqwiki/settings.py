@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'wiki.apps.WikiConfig',
     'board.apps.BoardConfig',
     'main.apps.MainConfig',
+    'trade.apps.TradeConfig',
+    'auction.apps.AuctionConfig',
     'loginRegistration.apps.LoginregistrationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
