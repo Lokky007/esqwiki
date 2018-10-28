@@ -3,5 +3,9 @@
 
 {% block content %}
 
-   trade page
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ TradeNewSell }}
+        <input type="submit" value="Submit" />
+    </form>
 {% endblock %}
