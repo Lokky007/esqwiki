@@ -1,1 +1,17 @@
 {% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="board_content_record">
+        {% if not newest_records %}
+                <strong>Žádné záznamy</strong>
+        {% else %}
+            {% for record in newest_records %}
+                {{ record.name }}
+                {{ record.x_created }}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+{% endblock %}
