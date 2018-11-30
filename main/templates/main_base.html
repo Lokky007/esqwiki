@@ -1,17 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="width_100p">
 
-    <div class="board_content_record">
+    <div class="main_news_record float-left">
         {% if not newest_records %}
                 <strong>Žádné záznamy</strong>
         {% else %}
-            {% for record in newest_records %}
-                {{ record.name }}
-                {{ record.x_created }}
-            {% endfor %}
+                <div class="">
+                    <table class="width_100p">
+                        {% for record in newest_records %}
+                                <tr>
+                                    <td class="width_35p">{{ record.name }}</td>
+                                    <td class="width_35p">{{ record.x_user }}</td>
+                                    <td class="width_35p">{{ record.x_created | date:'H:i j.n.Y ' }}</td>
+                                </tr>
+                        {% endfor %}
+                    </table>
+                </div>
         {% endif %}
     </div>
 
+        <div class="main_photo_items margin-left-20 width_55p float-left">
+            <div class="width_400 height_400 last_image">
+                <img class="main_photo">
+            </div>
+        </div>
+</div>
 
 {% endblock %}

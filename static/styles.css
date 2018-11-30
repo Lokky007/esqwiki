@@ -39,6 +39,57 @@ body :-ms-input-placeholder {
   font-weight: 300;
 }
 
+.width_100p{
+    width: 100%;
+}
+
+.width_65p{
+    width: 65%;
+}
+
+.width_55p{
+    width: 55%;
+}
+
+.width_35p{
+    width: 35%;
+}
+
+.width_400{
+    width: 400px;
+}
+
+.height_400{
+    height: 400px;
+}
+
+.margin-left-20{
+    margin-left: 20px;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+
+
+.main_news_record{
+    background-color: #13111199;
+    border-radius: 5px;
+    box-shadow: 6px 5px #13111159;
+    margin-bottom:10px;
+    color: #9d9d9d;
+    font-size: 14px;
+    padding-left: 10px;
+    width: 40%;
+
+}
+
+.main_photo_items,
 .wiki_record_row,
 .board_content_record{
     background-color: #13111199;
@@ -89,6 +140,25 @@ body :-ms-input-placeholder {
     margin-left: 23px;
     color: white;
     position: fixed;
-        background-color: #13111199;
+    background-color: #13111199;
     box-shadow: 6px 5px #13111159;
+}
+
+.main_photo{
+    width: 250px;
+    height: 200px;
+
+}
+
+.last_image{
+    left: 25%;
+    margin-top: 5%;
+    position: relative;
+}
+
+img{
+    border-radius: 8px;
+    background-size: 250px 200px;
+    background-repeat: no-repeat;
+    background-image: url('no_image.png');
 }
