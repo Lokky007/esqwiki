@@ -11,9 +11,10 @@
                     <table class="width_100p">
                         {% for record in newest_records %}
                                 <tr>
-                                    <td class="width_35p">{{ record.name }}</td>
-                                    <td class="width_35p">{{ record.x_user }}</td>
-                                    <td class="width_35p">{{ record.x_created | date:'H:i j.n.Y ' }}</td>
+                                    <td class="width_35p">{{ record.0 }}</td>
+                                    <td class="width_35p">{{ record.1 }}</td>
+                                    <td class="width_35p">{{ record.2 | date:'H:i j.n.Y ' }}</td>
+                                    <td class="width_35p">{{ record.3 }}</td>
                                 </tr>
                         {% endfor %}
                     </table>
