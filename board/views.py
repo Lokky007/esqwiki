@@ -9,17 +9,28 @@ from forms import BoardNewPost
 
 def index(request):
     if request.method == 'POST':
-        form = BoardNewPost(request.POST)
-        if form.is_valid():
-            text = form.cleaned_data.get("text")
-            record = posts(text=text, x_user_id=1)
-            record.save()
+        formPost = BoardNewPost(request.POST)
+        if formPost.is_valid():
+            text = formPost.cleaned_data.get("text")
+            if text:
+                record = posts(text=text, x_user_id=1)
+                record.save()
 
     board_new_post = BoardNewPost()
-    records = posts.objects.filter(deleted=0).order_by('-x_created')
+    postArray= []
+    records = posts.objects.filter(deleted=0, id_board_post_parent=None).order_by('-x_created')
+    for record in records:
+        answerArray = []
+        answers = posts.objects.filter(deleted=0, id_board_post_parent=record.id_board_post).order_by('-x_created')
+        for answer in answers:
+            answerArray.append(answer)
+
+        postArray.append([record, answerArray])
+
+
     return render(request, 'board_base.html',
                   {
-                      'board_records': records,
+                      'board_records': postArray,
                       'board_new_post': board_new_post
                   })
 
@@ -30,4 +41,13 @@ def delete_post(request, id_post):
         t.deleted = 1
         t.save()
         messages.success(request, 'Smazání proběhlo úspěšně.')
+    return redirect('/board/')
+
+
+def answer(request, id_post):
+    if request.method == 'POST':
+        text = request.POST['text']
+        if text:
+            record = posts(text=text, id_board_post_parent=id_post, x_user_id=1)
+            record.save()
     return redirect('/board/')

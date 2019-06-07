@@ -34,34 +34,29 @@
             </div>
 
     {% endif %}
-<script type="text/javascript">
-$(function () {
-    $('.wiki_record_row').on('click', function () {
-        var record_id = $(this).attr('id');
-        var wiki_record_type_id = $(this).attr('name');
-        $('.ajaxProgress').show();
-    $.ajax({
+        <script type="text/javascript">
+        $(function () {
+            $('.wiki_record_row').on('click', function () {
+                var record_id = $(this).attr('id');
+                $('.ajaxProgress').show();
+            $.ajax({
                 type:  "POST",
                 dataType: "json",
                 async: true,
                 url: '/wiki/items_preview/',
-        data: {
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-             record_id: record_id
-        },
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    record_id: record_id
+                },
 
                 success: function (json) {
-                    $('.items_right_content_fixed').html(json.message);
-                    $('.ajaxProgress').hide()
+                        $('.items_right_content_fixed').html(json.message);
+                        $('.ajaxProgress').hide()
+                    }
                 }
-            }
-    )
-})
-})
+            )
+        })
+        })
 
-</script>
-{% endblock %}
-        #data: {
-            wiki_record_id: record_id,
-            wiki_record_type_id: wiki_record_type_id
-        }
+        </script>
+        {% endblock %}

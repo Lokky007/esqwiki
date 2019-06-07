@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
+<div class="right_block">
 
     <form action="" method="post">
         {% csrf_token %}
@@ -21,19 +22,73 @@
 
     {% block records %}
         {% if not board_records %}
-                <strong>Žádné záznamy</strong>
+                <strong>No records</strong>
         {% else %}
             {% for record in board_records %}
-                <div class="board_content_record" id="{{ record.id_board_post }}_board_content_record">
-                    <p>#{{ record.id_board_post }}{{ record.x_created }} {{ record.x_user_id }}</p>
-                    <b>{{ record.text }}</b>
+                <div class="board_content_record" id="{{ record.0.id_board_post }}_board_content_record">
+                    <span>#{{ record.0.id_board_post }}</span>
+                    <span>{{ record.0.x_created |date:"G:i j.n.Y" }} {{ record.0.x_user_id }}</span>
+                    <b>{{ record.0.text }}</b>
                     <div class="">
-                        <a href="#">Odpovědět</a>
-                        <a href="/board/delete/{{ record.id_board_post }}">delete</a>
-                        <a HREF="#">Zpráva</a>
+                        <a href="#" onclick="prepareAnswerForm({{ record.0.id_board_post }})">Odpovedet</a>
+                        <a href="/board/delete/{{ record.0.id_board_post }}">delete</a>
+                        <a HREF="#">Zprava</a>
                     </div>
+
+                <!--
+                Answer form for question
+                -->
+
+                <div id="{{ record.0.id_board_post }}_answer"></div>
+
+                {% for answer in record.1 %}
+                    <span>{{ answer.x_created |date:"G:i j.n.Y" }}</span>
+                    <span><b>{{ answer.text }}</b></span>
+                {% endfor %}
                 </div>
             {% endfor %}
         {% endif %}
     {% endblock %}
+
+    <script>
+        function closeAnswerForm(id){
+            document.getElementById(id + "_answer").innerHTML = "";
+        }
+        function prepareAnswerForm(id){
+            closeAnswerForm(id);
+            var answer = document.getElementById(id + "_answer");
+
+            var form = document.createElement("form");
+            var element = document.createElement("input");
+            var button = document.createElement("button");
+            var cancel = document.createElement("button");
+
+            element.name="text";
+
+            button.setAttribute("type", "submit");
+            button.innerHTML = "Odeslat";
+
+            cancel.setAttribute("type", "button");
+            cancel.innerHTML = "Storno";
+            cancel.setAttribute("onclick", "closeAnswerForm("+id+")");
+
+            var z = document.createElement('input'); // is a node
+            z.value = jQuery("[name=csrfmiddlewaretoken]").val();
+            z.name = "csrfmiddlewaretoken";
+            z.setAttribute("type", "hidden");
+            form.appendChild(z);
+
+            form.method = "POST";
+            form.action = "/board/writeAnswer/"+id+"/";
+
+            form.appendChild(element);
+            form.appendChild(button);
+            form.appendChild(cancel);
+
+            answer.appendChild(form);
+        }
+
+    </script>
+</div>
+
 {% endblock %}
