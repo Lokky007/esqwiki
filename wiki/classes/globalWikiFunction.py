@@ -1,6 +1,19 @@
 # -*- coding: utf-8 -*-
+from wiki.models import WikiItem, WikiCraftProduct
+from django.shortcuts import render_to_response
 
 
-class detail_view():
-    def prepare_detail_view(self):
-        return "test"
+def prepare_data_detail_view(request):
+    try:
+        id = int(request.POST['record_id'])
+        records = WikiItem.objects.get(deleted=0, id_wikiItem=id)
+    except:
+        records = None
+
+    if not records:
+        return
+    return records
+
+
+def prepare_html_detail_view(data):
+    return render_to_response('detail_item_wiki.html', {'content': data})

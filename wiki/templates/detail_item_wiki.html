@@ -1,0 +1,11 @@
+<div>
+    {% if content %}
+        <img src="{{ content.image }}" alt="HTML5 Icon" width="128" height="128">
+        <span>{{ content.name }}</span> <br />
+        <span>{{ content.comment }}</span>  <br />
+        <span>{{ content.id_map_coordinate }}</span>  <br />
+        <span>{{ content.id_wikiCraftProductType.name }}</span>  <br />
+    {% else %}
+        <span> No data</span>
+    {% endif %}
+</div>

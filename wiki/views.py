@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from wiki.models import WikiItem, WikiCraftProduct
+import wiki.classes.globalWikiFunction as wiki_function
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
@@ -42,5 +43,7 @@ def engeneering(request):
 @csrf_exempt
 def content_for_dynamic_preview(request):
     response_data = {}
-    response_data['message'] = request.POST['record_id']
+    data = wiki_function.prepare_data_detail_view(request)
+    response_data['message'] = wiki_function.prepare_html_detail_view(data).content
+
     return HttpResponse(json.dumps(response_data), content_type="application/json")
