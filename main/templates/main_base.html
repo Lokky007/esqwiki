@@ -21,6 +21,21 @@
                 </div>
         {% endif %}
     </div>
+    <div class="main_news_record float-left">
+
+        {% if not actual_tasks %}
+                <strong>Žádné úkoly</strong>
+        {% else %}
+            <table class="width_100p">
+                {% for task in actual_tasks %}
+                    <tr>
+                        <td class="">{{ task.name }}</td>
+                        <td class="float-right">{{ task.complete_percentage }}%</td>
+                    </tr>
+            {% endfor %}
+            </table>
+        {% endif %}
+    </div>
 
         <div class="main_photo_items margin-left-20 width_55p float-left">
             <div class="width_400 height_400 last_image">

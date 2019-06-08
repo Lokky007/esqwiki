@@ -2,10 +2,19 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from wiki.models import WikiCraftProduct, WikiItem
 from board.models import posts
+from main.models import ProjectTasks
 
 
 # Create your views here.
 def index(request):
+    news = get_news()
+    tasks = get_tasks()
+
+    return render(request, 'main_base.html', {'newest_records': news,
+                                              'actual_tasks': tasks})
+
+
+def get_news():
     records_items = WikiItem.objects.filter().order_by('-x_created')[:5]
     records_products = WikiCraftProduct.objects.filter().order_by('-x_created')[:5]
     records_questions = posts.objects.filter().order_by('-x_created')[:5]
@@ -22,7 +31,11 @@ def index(request):
 
     sorted(list_news, key=getKey, reverse=True)
 
-    return render(request, 'main_base.html', {'newest_records': list_news})
+    return list_news
+
+
+def get_tasks():
+    return ProjectTasks.objects.filter().order_by('-x_created')
 
 
 def getKey(item):
