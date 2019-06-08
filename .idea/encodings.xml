@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/board/templates/board_base.html" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/static/styles.css" charset="windows-1250" />
+  </component>
+</project>
