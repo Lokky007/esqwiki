@@ -4,6 +4,7 @@
 <div class="width_100p">
 
     <div class="main_news_record float-left">
+        <span class="float-left main_page_block_title">Nejnovější příspěvky</span>
         {% if not newest_records %}
                 <strong>Žádné záznamy</strong>
         {% else %}
@@ -22,13 +23,13 @@
         {% endif %}
     </div>
     <div class="main_news_record float-right">
-
+        <div class="float-left main_page_block_title">Co připravujeme</div>
         {% if not actual_tasks %}
                 <strong>Žádné úkoly</strong>
         {% else %}
             <table class="width_100p">
                 {% for task in actual_tasks %}
-                    <tr>
+                    <tr  data-toggle="tooltip" data-placement="top" title="{{ task.description }}">
                         <td class="">{{ task.name }}</td>
                         <td class="float-right">{{ task.complete_percentage }}%</td>
                     </tr>

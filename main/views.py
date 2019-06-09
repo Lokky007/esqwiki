@@ -35,7 +35,7 @@ def get_news():
 
 
 def get_tasks():
-    return ProjectTasks.objects.filter().order_by('-x_created')
+    return ProjectTasks.objects.filter().order_by('-x_created')[:10]
 
 
 def getKey(item):
