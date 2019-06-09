@@ -9,6 +9,7 @@ from django.contrib.auth import (
 from django.contrib.auth.models import User
 from .forms import UserRegisterForm, UserLoginForm
 
+
 # Login - check and redirect
 def Login(request):
     loginForm = UserLoginForm(request.POST or None)
@@ -22,6 +23,7 @@ def Login(request):
             return redirect('/main/')
 
     return render(request, 'extension/login.html', {"loginForm": loginForm})
+
 
 # Register - check data and if correct, redirect.
 def Register(request):
@@ -37,6 +39,7 @@ def Register(request):
         return render(request, 'extension/registrationSuccess.html', {"username": username})
 
     return render(request, 'extension/registration.html', {"form": form})
+
 
 # Logout function for destroy relation
 def Logout (request):
