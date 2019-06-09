@@ -3,7 +3,7 @@
 {% block content %}
 <div class="width_100p">
 
-    <div class="main_news_record float-left">
+    <div class="main_news_record float-left height_300">
         <span class="float-left main_page_block_title">Nejnovější příspěvky</span>
         {% if not newest_records %}
                 <strong>Žádné záznamy</strong>
@@ -22,7 +22,7 @@
                 </div>
         {% endif %}
     </div>
-    <div class="main_news_record float-right">
+    <div class="main_news_record float-right height_300">
         <div class="float-left main_page_block_title">Co připravujeme</div>
         {% if not actual_tasks %}
                 <strong>Žádné úkoly</strong>
@@ -44,6 +44,21 @@
             </div>
         </div>
         -->
+
 </div>
+
+    <div class="width_100p main_news_server_record">
+        <div class="main_page_block_title">Novinky</div>
+            <div>
+        {% if not server_news %}
+                <span>Aktuálě zde nejsou žádné novinky</span>
+            <hr>
+        {% else %}
+            <!-- DATA Z NOVINEK --> 
+            <hr>
+        {% endif %}
+            </div>
+    </div>
+
 
 {% endblock %}
