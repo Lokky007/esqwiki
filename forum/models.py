@@ -13,12 +13,24 @@ class AccessRight(models.Model):
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 
+class CategoryBlock(models.Model):
+    id_category_block = models.AutoField(primary_key=True)
+    name = models.CharField(blank=False, null=False, max_length=256)
+    text = models.CharField(blank=False, null=False, max_length=2048)
+    show = models.BooleanField(default=True)
+    access_right = models.ForeignKey(AccessRight, blank=True, null=True)
+    x_created = models.DateTimeField(auto_now_add=True)
+    x_modified = models.DateTimeField(auto_now=True)
+    x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+
 class Category(models.Model):
     id_category = models.AutoField(primary_key=True)
     title = models.CharField(blank=False, null=False, max_length=256)
     description = models.CharField(max_length=2048)
     show = models.BooleanField(default=True)
     access_right = models.ForeignKey(AccessRight, blank=True, null=True)
+    id_category_block = models.ForeignKey(CategoryBlock, blank=True, null=True)
     x_created = models.DateTimeField(auto_now_add=True)
     x_modified = models.DateTimeField(auto_now=True)
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)

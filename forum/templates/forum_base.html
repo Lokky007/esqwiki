@@ -2,5 +2,24 @@
 {% load staticfiles %}
 
 {% block content %}
-    jedu
+
+    {% if category_data %}
+        {% for category in category_data %}
+                <div class="topic_category_block">
+                    <h3>{{ category.0.name }}</h3>
+                    <span>
+                        {% if category.1 %}
+                        {% for item in category.1 %}
+                            <a href="/forum/{{ item.id_category }}">
+                                <ul>
+                                    {{ item.title }}
+                                </ul>
+                            </a>
+                        {% endfor %}
+                            {% endif %}
+                    </span>
+                </div>
+        {% endfor %}
+    {% endif %}
+
 {% endblock %}

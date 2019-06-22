@@ -10,10 +10,10 @@ urlpatterns = [
     url(r'^logout/$', views.Logout, name='Logout'),
 
 
-    url('main/', include("main.urls"), name='main'),
-    url('board/', include("board.urls"), name='board'),
-    url('wiki/', include("wiki.urls"), name='wiki'),
-    url('auction/', include("auction.urls"), name='auction'),
-    url('trade/', include("trade.urls"), name='trade'),
-    url('forum/', include("forum.urls"), name='forum'),
+    url('^main/', include("main.urls"), name='main'),
+    url('^board/', include("board.urls"), name='board'),
+    url('^wiki/', include("wiki.urls"), name='wiki'),
+    url('^auction/', include("auction.urls"), name='auction'),
+    url('^trade/', include("trade.urls"), name='trade'),
+    url('^forum/', include("forum.urls"), name='forum'),
 ]

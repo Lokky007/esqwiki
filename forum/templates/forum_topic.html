@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+    {% if topic_data %}
+
+        {% for topic in topic_data %}
+            <div class="padding_bottom_10">
+                <span class="topic_header">
+                        {{ topic.name }}
+                </span>
+
+            </div>
+                <div class="topic_category_block">
+                    {{ topic.text }}
+                </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

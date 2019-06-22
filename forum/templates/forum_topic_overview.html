@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% if topic_data %}
+        {% for topic in topic_data %}
+            <div class="topic_block" data-toggle="tooltip" data-placement="right" title="{{ topic.text }}">
+                <a href="{{ topic.category_id }}{{ topic.id }}">
+                    <span  data-toggle="tooltip" data-placement="right" title="{{ topic.text }}">{{ topic.name }}</span>
+                </a>
+                <span class="float-right">{{ topic.x_created }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
