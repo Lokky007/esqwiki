@@ -16,4 +16,5 @@ urlpatterns = [
     url('^auction/', include("auction.urls"), name='auction'),
     url('^trade/', include("trade.urls"), name='trade'),
     url('^forum/', include("forum.urls"), name='forum'),
+    url('^map/', include("worldmap.urls"), name='worldmap'),
 ]

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'trade.apps.TradeConfig',
     'auction.apps.AuctionConfig',
     'forum.apps.ForumConfig',
+    'worldmap.apps.WorldmapConfig',
     'loginRegistration.apps.LoginregistrationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
