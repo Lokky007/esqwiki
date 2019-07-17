@@ -9,14 +9,14 @@
                     <h3>{{ category.0.name }}</h3>
                     <span>
                         {% if category.1 %}
-                        {% for item in category.1 %}
-                            <a href="/forum/{{ item.id_category }}">
-                                <ul>
-                                    {{ item.title }}
-                                </ul>
-                            </a>
-                        {% endfor %}
-                            {% endif %}
+                            {% for item in category.1 %}
+                                <a href="/forum/{{ item.id_category }}">
+                                    <ul>
+                                        {{ item.title }}
+                                    </ul>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
                     </span>
                 </div>
         {% endfor %}

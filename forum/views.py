@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.shortcuts import redirect
-from forum.models import CategoryBlock, Category, Topic
+from forum.models import CategoryBlock, Category, Topic, Answer
 
 
 # Create your views here.
@@ -28,4 +28,8 @@ def topic_overview(request, id_category):
 
 def topic(request,id_category, id_topic):
     topic_data = Topic.objects.filter(id_topic=id_topic, deleted=0)
-    return render(request, 'forum_topic.html', {'topic_data': topic_data})
+    answer_data = Answer.objects.filter(topic=id_topic, deleted=0)
+    return render(request, 'forum_topic.html',
+                  {'answer_data': answer_data,
+                   'topic_data': topic_data
+                   })

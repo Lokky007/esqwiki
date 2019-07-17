@@ -11,12 +11,26 @@
                 <span class="topic_header">
                         {{ topic.name }}
                 </span>
-
             </div>
-                <div class="topic_category_block">
-                    {{ topic.text }}
-                </div>
+
+            <div class="topic_category_block">
+                {{ topic.text }}
+            </div>
         {% endfor %}
+
+        <hr>
+
+        {% if answer_data %}
+            {% for answer in answer_data %}
+                <div class="topic_category_block">
+                    {{ answer.text }}
+                    <div>
+                        <a href="">Reagovat</a>
+                        <a href="forum_base.html">Smazat</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
     {% endif %}
 
 {% endblock %}
