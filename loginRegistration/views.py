@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 
 from django.contrib.auth import (
@@ -12,6 +13,7 @@ from .forms import UserRegisterForm, UserLoginForm
 
 # Login - check and redirect
 def Login(request):
+    print 'sss'
     loginForm = UserLoginForm(request.POST or None)
     if loginForm.is_valid():
         username = loginForm.cleaned_data.get("username")
@@ -35,10 +37,22 @@ def Register(request):
         lname = form.cleaned_data.get("user_last_name")
         email = form.cleaned_data.get("user_email")
 
-        user = User.objects.create_user(username, email, password, last_name=lname, first_name=fname)
+        newUser = User.objects.create_user(username, email, password, last_name=lname, first_name=fname)
+
+        RegistrationEmail(newUser)
+
         return render(request, 'extension/registrationSuccess.html', {"username": username})
 
     return render(request, 'extension/registration.html', {"form": form})
+
+
+def RegistrationEmail(User):
+    subject = 'Registrace na ESQWiki'
+    message = 'Pro aktivaci kliknete na odkaz'
+    html_message = 'asd'
+
+    User.email_user(subject=subject, message=message,
+                    html_message=html_message)
 
 
 # Logout function for destroy relation

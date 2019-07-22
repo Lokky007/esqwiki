@@ -77,6 +77,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'esqwiki.wsgi.application'
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'lokishek007@gmail.com'
+EMAIL_HOST_PASSWORD = 'pajinka007'
+EMAIL_PORT = 587
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases

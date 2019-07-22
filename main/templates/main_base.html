@@ -4,28 +4,36 @@
 <div class="width_100p">
 
     <div class="main_news_record float-left height_300">
-        <span class="float-left main_page_block_title">Nejnovější příspěvky</span>
-        {% if not newest_records %}
-                <strong>Žádné záznamy</strong>
-        {% else %}
-                <div class="">
+        <div class="d-inline-block">
+            <span class="float-left main_page_block_title">Nejnovější příspěvky</span>
+        </div>
+        <div class="">
+            {% if not newest_records %}
+                    <span>
+                        <strong>Žádné záznamy</strong>
+                    </span>
+            {% else %}
                     <table class="width_100p">
                         {% for record in newest_records %}
-                                <tr>
-                                    <td class="width_35p">{{ record.0 }}</td>
-                                    <td class="width_35p">{{ record.1 }}</td>
-                                    <td class="width_35p">{{ record.2 | date:'H:i j.n.Y ' }}</td>
-                                    <td class="width_35p">{{ record.3 }}</td>
-                                </tr>
+                            <tr>
+                                <td class="width_35p">{{ record.0 }}</td>
+                                <td class="width_35p">{{ record.1 }}</td>
+                                <td class="width_35p">{{ record.2 | date:'H:i j.n.Y ' }}</td>
+                                <td class="width_35p">{{ record.3 }}</td>
+                            </tr>
                         {% endfor %}
                     </table>
-                </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
     <div class="main_news_record float-right height_300">
-        <div class="float-left main_page_block_title">Co připravujeme</div>
+        <div class="d-inline-block">
+            <div class="float-left main_page_block_title">Co připravujeme</div>
+        </div>
         {% if not actual_tasks %}
+             <div class="">
                 <strong>Žádné úkoly</strong>
+             </div>
         {% else %}
             <table class="width_100p">
                 {% for task in actual_tasks %}
