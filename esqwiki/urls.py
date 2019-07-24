@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^registration/$', views.Register, name='Register'),
     url(r'^logout/$', views.Logout, name='Logout'),
 
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
 
     #url('^', include("main.urls"), name='main'),
     url('^main/', include("main.urls"), name='main'),

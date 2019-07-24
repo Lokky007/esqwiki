@@ -99,7 +99,7 @@ DATABASES = {
         'NAME': 'esqwiki',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
