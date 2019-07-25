@@ -28,23 +28,31 @@
                 <div class="board_content_record" id="{{ record.0.id_board_post }}_board_content_record">
                     <span>#{{ record.0.id_board_post }}</span>
                     <span>{{ record.0.x_created |date:"G:i j.n.Y" }} {{ record.0.x_user_id }}</span>
+                    <br>
                     <b>{{ record.0.text }}</b>
+                {% if user.id %}
                     <div class="">
                         <a href="#" onclick="prepareAnswerForm({{ record.0.id_board_post }})">Odpovedet</a>
-                        <a href="/board/delete/{{ record.0.id_board_post }}">delete</a>
+                        {% if user.id == record.0.x_user_id %}
+                            <a href="/board/delete/{{ record.0.id_board_post }}">delete</a>
+                        {% endif %}
                         <a HREF="#">Zprava</a>
                     </div>
+                {% endif %}
 
                 <!--
                 Answer form for question
                 -->
 
                 <div id="{{ record.0.id_board_post }}_answer"></div>
-
-                {% for answer in record.1 %}
-                    <span>{{ answer.x_created |date:"G:i j.n.Y" }}</span>
-                    <span><b>{{ answer.text }}</b></span>
-                {% endfor %}
+                    <div class="board_line"></div>
+                {% if record.1 %}
+                    {% for answer in record.1 %}
+                        <span>{{ answer.x_created |date:"G:i j.n" }}</span>
+                        <span><b>{{ answer.text }}</b></span>
+                        <br>
+                    {% endfor %}
+                {% endif %}
                 </div>
             {% endfor %}
         {% endif %}

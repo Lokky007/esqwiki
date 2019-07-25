@@ -9,8 +9,8 @@ from main.models import ProjectTasks
 def index(request):
     news = get_news()
     tasks = get_tasks()
-
     return render(request, 'main_base.html', {'newest_records': news,
+                                              'user':  request.user,
                                               'actual_tasks': tasks})
 
 

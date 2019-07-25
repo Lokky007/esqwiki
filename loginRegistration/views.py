@@ -26,8 +26,8 @@ class AccountActivationTokenGenerator(PasswordResetTokenGenerator):
 def Login(request):
     loginForm = UserLoginForm(request.POST or None)
     if loginForm.is_valid():
-        username = loginForm.cleaned_data.get("username")
-        password = loginForm.cleaned_data.get("passsword")
+        username = loginForm.cleaned_data.get("login_name")
+        password = loginForm.cleaned_data.get("login_pass")
         user = authenticate(username=username, password=password)
         print user, username, password
         login(request, user)

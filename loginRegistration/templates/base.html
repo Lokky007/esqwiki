@@ -41,8 +41,13 @@
                     <li><a href="#" class="disabled">E-Shop</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/loginRegistration"><span class="glyphicon glyphicon-user"></span>Registrovat</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Přihlášení</a></li>
+                      {% if not user.id %}
+                          <li><a href="/registration"><span class="glyphicon glyphicon-user"></span>Registrovat</a></li>
+                          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Přihlášení</a></li>
+                      {% else %}
+                          <li><a>{{ user.username }}</a></li>
+                          <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Odhlásit se</a></li>
+                      {% endif %}
                   </ul>
                 </div>
               </div>

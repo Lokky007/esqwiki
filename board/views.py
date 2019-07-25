@@ -13,7 +13,7 @@ def index(request):
         if formPost.is_valid():
             text = formPost.cleaned_data.get("text")
             if text:
-                record = posts(text=text, x_user_id=1)
+                record = posts(text=text, x_user_id=request.user.id)
                 record.save()
 
     board_new_post = BoardNewPost()
@@ -31,6 +31,7 @@ def index(request):
     return render(request, 'board_base.html',
                   {
                       'board_records': postArray,
+                      'user': request.user,
                       'board_new_post': board_new_post
                   })
 
@@ -48,6 +49,6 @@ def answer(request, id_post):
     if request.method == 'POST':
         text = request.POST['text']
         if text:
-            record = posts(text=text, id_board_post_parent=id_post, x_user_id=1)
+            record = posts(text=text, id_board_post_parent=id_post, x_user_id=request.user.id)
             record.save()
     return redirect('/board/')
