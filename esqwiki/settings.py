@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'trade.apps.TradeConfig',
     'auction.apps.AuctionConfig',
+    'questions.apps.QuestionsConfig',
     'forum.apps.ForumConfig',
     'worldmap.apps.WorldmapConfig',
     'loginRegistration.apps.LoginregistrationConfig',

@@ -2,14 +2,9 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="right_block">
+<div class="right_block width_100p">
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ board_new_post }}
-        <input type="submit" value="Submit" />
-    </form>
-
+    <!-- alert message -->
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -20,44 +15,23 @@
     </ul>
     {% endif %}
 
+    <!-- block help -->
     {% block records %}
-        {% if not board_records %}
-                <strong>No records</strong>
-        {% else %}
-            {% for record in board_records %}
-                <div class="board_content_record" id="{{ record.0.id_board_post }}_board_content_record">
-                    <span>#{{ record.0.id_board_post }}</span>
-                    <span>{{ record.0.x_created |date:"G:i j.n.Y" }} {{ record.0.x_user_id }}</span>
-                    <br>
-                    <b>{{ record.0.text }}</b>
-                {% if user.id %}
-                    <div class="">
-                        <a href="#" onclick="prepareAnswerForm({{ record.0.id_board_post }})">Odpovedet</a>
-                        {% if user.id == record.0.x_user_id %}
-                            <a href="/board/delete/{{ record.0.id_board_post }}">delete</a>
-                        {% endif %}
-                        <a HREF="#">Zprava</a>
-                    </div>
-                {% endif %}
-
-                <!--
-                Answer form for question
-                -->
-
-                <div id="{{ record.0.id_board_post }}_answer"></div>
-                    <div class="board_line"></div>
-                {% if record.1 %}
-                    {% for answer in record.1 %}
-                        <span>{{ answer.x_created |date:"G:i j.n" }}</span>
-                        <span><b>{{ answer.text }}</b></span>
-                        <br>
-                    {% endfor %}
-                {% endif %}
-                </div>
-            {% endfor %}
-        {% endif %}
+       <div class="float-left width_100p">
+            {% include 'block/questionBlock.html' with board_records=board_records %}
+       </div>
     {% endblock %}
 
+</div>
+
+<div class="left_block width_100p">
+
+   <!-- block sell buy -->
+    {% block records2 %}
+        <div class="float-left width_100p">
+            {% include 'block/buySellBlock.html' with sellBuy_records=sellBuy_records %}
+        </div>
+    {% endblock %}
     <script>
         function closeAnswerForm(id){
             document.getElementById(id + "_answer").innerHTML = "";

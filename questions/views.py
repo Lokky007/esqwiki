@@ -12,7 +12,7 @@ def index(request):
         form = QuestionsNewPost(request.POST)
         if form.is_valid():
             text = form.cleaned_data.get("text")
-            record = questions(text=text, x_user_id=1)
+            record = questions(text=text, x_user_id=request.user.id)
             record.save()
 
     question_new_post = QuestionsNewPost()
