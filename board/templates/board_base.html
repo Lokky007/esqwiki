@@ -32,45 +32,7 @@
             {% include 'block/buySellBlock.html' with sellBuy_records=sellBuy_records %}
         </div>
     {% endblock %}
-    <script>
-        function closeAnswerForm(id){
-            document.getElementById(id + "_answer").innerHTML = "";
-        }
-        function prepareAnswerForm(id){
-            closeAnswerForm(id);
-            var answer = document.getElementById(id + "_answer");
 
-            var form = document.createElement("form");
-            var element = document.createElement("input");
-            var button = document.createElement("button");
-            var cancel = document.createElement("button");
-
-            element.name="text";
-
-            button.setAttribute("type", "submit");
-            button.innerHTML = "Odeslat";
-
-            cancel.setAttribute("type", "button");
-            cancel.innerHTML = "Storno";
-            cancel.setAttribute("onclick", "closeAnswerForm("+id+")");
-
-            var z = document.createElement('input'); // is a node
-            z.value = jQuery("[name=csrfmiddlewaretoken]").val();
-            z.name = "csrfmiddlewaretoken";
-            z.setAttribute("type", "hidden");
-            form.appendChild(z);
-
-            form.method = "POST";
-            form.action = "/board/writeAnswer/"+id+"/";
-
-            form.appendChild(element);
-            form.appendChild(button);
-            form.appendChild(cancel);
-
-            answer.appendChild(form);
-        }
-
-    </script>
 </div>
 
 {% endblock %}
