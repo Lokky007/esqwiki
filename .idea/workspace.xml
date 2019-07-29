@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e1398357-f9ec-48ac-9aca-2da665e4bb5b" name="Default" comment="login correction and board css">
-      <change afterPath="$PROJECT_DIR$/questions/migrations/0001_initial.py" afterDir="false" />
+    <list default="true" id="e1398357-f9ec-48ac-9aca-2da665e4bb5b" name="Default" comment="board-js correction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board/templates/board_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/board/templates/board_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esqwiki/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/esqwiki/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/questions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/questions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/templates/forum_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/forum/templates/forum_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/templates/forum_topic.html" beforeDir="false" afterPath="$PROJECT_DIR$/forum/templates/forum_topic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/templates/forum_topic_overview.html" beforeDir="false" afterPath="$PROJECT_DIR$/forum/templates/forum_topic_overview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/forum/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wiki/templates/index_page_wiki.html" beforeDir="false" afterPath="$PROJECT_DIR$/wiki/templates/index_page_wiki.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wiki/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/wiki/views.py" afterDir="false" />
     </list>
     <ignored path="esqwiki.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,28 +60,19 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/esqwiki/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-956">
+                  <caret line="48" column="1" lean-forward="true" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main/templates/main_base.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state>
                   <caret column="18" selection-start-column="18" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/venv/local/lib/python2.7/site-packages/django/utils/functional.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="224">
-                  <caret line="238" selection-start-line="238" selection-end-line="238" />
                 </state>
               </provider>
             </entry>
@@ -97,11 +86,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/styles.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="296">
-                  <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
+                <state relative-caret-position="206">
+                  <caret line="111" column="23" lean-forward="true" selection-start-line="111" selection-start-column="23" selection-end-line="111" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
@@ -109,8 +98,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/board/templates/board_base.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+                <state relative-caret-position="302">
+                  <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
                 </state>
               </provider>
             </entry>
@@ -118,26 +107,41 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/board/templates/block/buySellBlock.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+                <state relative-caret-position="-634">
+                  <caret line="34" column="61" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="61" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/board/templates/block/questionBlock.html">
+            <entry file="file://$PROJECT_DIR$/forum/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+                <state relative-caret-position="420">
+                  <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+                  <folding>
+                    <element signature="e#25#60#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/board/forms.py">
+            <entry file="file://$PROJECT_DIR$/forum/forms.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="45">
-                  <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+                  <caret line="3" column="13" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/extension/popup/popup_window.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="15">
+                  <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#204#211#1#HTML" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -147,43 +151,31 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/esqwiki/settings.py">
+            <entry file="file://$PROJECT_DIR$/forum/templates/forum_topic.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="169">
-                  <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+                <state relative-caret-position="480">
+                  <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/esqwiki/urls.py">
+            <entry file="file://$PROJECT_DIR$/forum/templates/forum_base.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+                <state relative-caret-position="330">
+                  <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/extension/popup/popup_window.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="18" column="26" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="26" />
                   <folding>
-                    <element signature="e#0#41#0" expanded="true" />
+                    <element signature="e#0#35#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/board/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="67" />
-                  <folding>
-                    <element signature="e#25#60#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/board/models.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -200,14 +192,35 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/questions/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
+                <state relative-caret-position="105">
+                  <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
                   <folding>
                     <element signature="e#25#60#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/wiki/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="186">
+                  <caret line="16" column="65" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="65" />
+                  <folding>
+                    <element signature="e#0#35#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/wiki/templates/index_page_wiki.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -220,15 +233,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>django.db.backends.XXX</find>
       <find>django.db.backends.XXX'</find>
       <find>Žádné záznamy</find>
       <find>display: inline-block;</find>
@@ -252,6 +264,13 @@
       <find>activate</find>
       <find>sell_buy_new_post</find>
       <find>sellBuy_records</find>
+      <find>board</find>
+      <find>document.getElementById(id + &quot;_answer&quot;).innerHTML = &quot;&quot;</find>
+      <find>closeAnswerForm</find>
+      <find>_answer</find>
+      <find>wiki_content</find>
+      <find>id_board_post</find>
+      <find>_comment</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -260,12 +279,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/board/templates/base.html" />
-        <option value="$PROJECT_DIR$/static/base.html" />
-        <option value="$PROJECT_DIR$/templates/board_template/board_base.html" />
-        <option value="$PROJECT_DIR$/wiki/admin.py" />
-        <option value="$PROJECT_DIR$/wiki/models.py" />
-        <option value="$PROJECT_DIR$/auction/views.py" />
         <option value="$PROJECT_DIR$/wiki/detailView.py" />
         <option value="$PROJECT_DIR$/wiki/globalWikiFunction.py" />
         <option value="$PROJECT_DIR$/wiki/urls.py" />
@@ -275,8 +288,6 @@
         <option value="$PROJECT_DIR$/trade/urls.py" />
         <option value="$PROJECT_DIR$/trade/forms.py" />
         <option value="$PROJECT_DIR$/trade/views.py" />
-        <option value="$PROJECT_DIR$/wiki/templates/index_page_wiki.html" />
-        <option value="$PROJECT_DIR$/wiki/views.py" />
         <option value="$PROJECT_DIR$/wiki/templates/detail_item_wiki.html" />
         <option value="$PROJECT_DIR$/wiki/classes/globalWikiFunction.py" />
         <option value="$PROJECT_DIR$/loginRegistration/templates/baseLoginRegistration.html" />
@@ -285,10 +296,6 @@
         <option value="$PROJECT_DIR$/forum/admin.py" />
         <option value="$PROJECT_DIR$/forum/models.py" />
         <option value="$PROJECT_DIR$/forum/urls.py" />
-        <option value="$PROJECT_DIR$/forum/templates/forum_topic_overview.html" />
-        <option value="$PROJECT_DIR$/forum/views.py" />
-        <option value="$PROJECT_DIR$/forum/templates/forum_base.html" />
-        <option value="$PROJECT_DIR$/forum/templates/forum_topic.html" />
         <option value="$PROJECT_DIR$/worldmap/urls.py" />
         <option value="$PROJECT_DIR$/worldmap/views.py" />
         <option value="$PROJECT_DIR$/static/leaflet.js" />
@@ -302,15 +309,27 @@
         <option value="$PROJECT_DIR$/main/views.py" />
         <option value="$PROJECT_DIR$/loginRegistration/views.py" />
         <option value="$PROJECT_DIR$/loginRegistration/templates/base.html" />
-        <option value="$PROJECT_DIR$/esqwiki/settings.py" />
         <option value="$PROJECT_DIR$/questions/forms.py" />
         <option value="$PROJECT_DIR$/board/forms.py" />
-        <option value="$PROJECT_DIR$/board/templates/block/questionBlock.html" />
-        <option value="$PROJECT_DIR$/board/templates/board_base.html" />
-        <option value="$PROJECT_DIR$/board/templates/block/buySellBlock.html" />
         <option value="$PROJECT_DIR$/board/views.py" />
         <option value="$PROJECT_DIR$/questions/views.py" />
         <option value="$PROJECT_DIR$/static/styles.css" />
+        <option value="$PROJECT_DIR$/board/templates/board_base.html" />
+        <option value="$PROJECT_DIR$/board/templates/block/buySellBlock.html" />
+        <option value="$PROJECT_DIR$/board/templates/block/questionBlock.html" />
+        <option value="$PROJECT_DIR$/wiki/views.py" />
+        <option value="$PROJECT_DIR$/wiki/templates/index_page_wiki.html" />
+        <option value="$PROJECT_DIR$/static/popup_window.html" />
+        <option value="$PROJECT_DIR$/static/extension/popup/popup_window.py" />
+        <option value="$PROJECT_DIR$/esqwiki/settings.py" />
+        <option value="$PROJECT_DIR$/forum/templates/forum_base.html" />
+        <option value="$PROJECT_DIR$/forum/templates/forum_topic.html" />
+        <option value="$PROJECT_DIR$/forum/templates/forum_topic_overview.html" />
+        <option value="$PROJECT_DIR$/forum/templates/forms.py" />
+        <option value="$PROJECT_DIR$/forum/forms.py" />
+        <option value="$PROJECT_DIR$/extension/popup/popup_window.py" />
+        <option value="$PROJECT_DIR$/forum/views.py" />
+        <option value="$PROJECT_DIR$/extension/popup/popup_window.html" />
       </list>
     </option>
   </component>
@@ -343,31 +362,35 @@
             <path>
               <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
               <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
+              <item name="extension" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
+              <item name="extension" type="462c0819:PsiDirectoryNode" />
+              <item name="popup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
+              <item name="forum" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
+              <item name="forum" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
               <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="block" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
               <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
-              <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
-              <item name="questions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esqwiki" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esqwiki" type="462c0819:PsiDirectoryNode" />
-              <item name="questions" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="extension" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -387,19 +410,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\My_projects\esqwiki\static\extension\leafletembed" />
-      <recent name="D:\My_projects\esqwiki\wiki\classes" />
-      <recent name="D:\My_projects\esqwiki\loginRegistration\templates" />
-      <recent name="D:\My_projects\esqwiki\board\templates" />
-      <recent name="D:\My_projects\esqwiki\templates\board_template" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\My_projects\esqwiki\worldmap" />
       <recent name="D:\My_projects\esqwiki\forum\templates" />
       <recent name="D:\My_projects\esqwiki\trade" />
       <recent name="D:\My_projects\esqwiki\auction" />
       <recent name="D:\My_projects\esqwiki\bootstrap" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/forum" />
+      <recent name="$PROJECT_DIR$/extension" />
+      <recent name="$PROJECT_DIR$/static/extension/popup" />
+      <recent name="D:\My_projects\esqwiki\static\extension\leafletembed" />
+      <recent name="D:\My_projects\esqwiki\wiki\classes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -514,7 +537,7 @@
       <workItem from="1563822271683" duration="5410000" />
       <workItem from="1563898604718" duration="1988000" />
       <workItem from="1563983433315" duration="803000" />
-      <workItem from="1563984262756" duration="23852000" />
+      <workItem from="1563984262756" duration="34822000" />
     </task>
     <task id="LOCAL-00001" summary="mail registration">
       <created>1563828282428</created>
@@ -537,7 +560,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564069721966</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="board rework separation of questions and sellbuy blocks">
+      <created>1564226883734</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1564226883734</updated>
+    </task>
+    <task id="LOCAL-00005" summary="board-js correction">
+      <created>1564230117955</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1564230117955</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -555,19 +592,19 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44347000" />
+    <option name="totallyTimeSpent" value="55317000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1867" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14222954" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14222954" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49583334" weight="0.25809935" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49583334" visible="true" weight="0.3401728" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49583334" visible="true" weight="0.3401728" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -624,14 +661,18 @@
     <MESSAGE value="mail registration" />
     <MESSAGE value="account activation via mail registration" />
     <MESSAGE value="login correction and board css" />
-    <option name="LAST_COMMIT_MESSAGE" value="login correction and board css" />
+    <MESSAGE value="board - rework - separation of questions and sellbuy blocks" />
+    <MESSAGE value="board rework - separation of questions and sellbuy blocks" />
+    <MESSAGE value="board rework separation of questions and sellbuy blocks" />
+    <MESSAGE value="board-js correction" />
+    <option name="LAST_COMMIT_MESSAGE" value="board-js correction" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/wiki/templates/index_page_wiki.html</url>
-          <line>51</line>
+          <line>52</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -664,10 +705,30 @@
           <line>30</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/extension/popup/popup_window.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/forum/views.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/forum/views.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="django-line">
           <url>file://$PROJECT_DIR$/wiki/templates/detail_item_wiki.html</url>
           <line>1</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/board/templates/block/questionBlock.html</url>
+          <line>34</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -729,102 +790,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#22#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum/templates/forum_topic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/worldmap/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-          <folding>
-            <element signature="e#24#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/worldmap/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/extension/leaflet/leaflet-src.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209250">
-          <caret line="13953" column="11" selection-start-line="13953" selection-start-column="8" selection-end-line="13953" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/extension/leaflet/Leaflet.Zoomify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum/templates/forum_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/worldmap/templates/worldmap_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginRegistration/templates/extension/registrationSuccess.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1802d820-f88e-47c4-aae5-d02e6c457a50/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://1802d820-f88e-47c4-aae5-d02e6c457a50/schema/esqwiki/table/auth_user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/local/lib/python2.7/site-packages/django/core/handlers/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1802d820-f88e-47c4-aae5-d02e6c457a50/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -974,20 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginRegistration/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="52" column="20" lean-forward="true" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/esqwiki/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/questions/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1019,20 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/board/templates/block/questionBlock.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://1802d820-f88e-47c4-aae5-d02e6c457a50/schema/esqwiki/table/auth_group">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1054,13 +991,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/questions/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1071,44 +1001,182 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/views.py">
+    <entry file="file://$PROJECT_DIR$/static/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="67" />
-          <folding>
-            <element signature="e#25#60#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="206">
+          <caret line="111" column="23" lean-forward="true" selection-start-line="111" selection-start-column="23" selection-end-line="111" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/questions/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="e#25#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wiki/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="16" column="65" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wiki/templates/index_page_wiki.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/templates/block/questionBlock.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="54" column="65" lean-forward="true" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/esqwiki/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-956">
+          <caret line="48" column="1" lean-forward="true" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginRegistration/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="52" column="20" lean-forward="true" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/board/templates/board_base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        <state relative-caret-position="302">
+          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/board/templates/block/buySellBlock.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+        <state relative-caret-position="-634">
+          <caret line="34" column="61" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/styles.css">
+    <entry file="file://$PROJECT_DIR$/forum/templates/forum_base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
+        <state relative-caret-position="330">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/forum_topic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/collections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/local/lib/python2.7/site-packages/django/template/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/local/lib/python2.7/site-packages/django/template/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/templates/forum_topic_overview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extension/popup/popup_window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+          <folding>
+            <element signature="e#25#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extension/popup/popup_window.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+          <folding>
+            <element signature="e#204#211#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

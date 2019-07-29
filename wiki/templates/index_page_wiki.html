@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-    {% if not wiki_content %}
+    {% if wiki_menu %}
 
             <div class="wiki_type_content_overview">
                 <a href="/wiki/items/"><div class="wiki_type_item">Suroviny</div></a>
@@ -13,18 +13,19 @@
             </div>
 
     {% else %}
-
+        {% if not wiki_content %}
+                <div class="">No records</div>
+        {% else %}
             <div class="items_left_content">
-                {% for wiki_record in wiki_content %}
-                    <div class="wiki_record_row" id="{{ wiki_record.id_wikiItem }}" name="{{ wiki_record.id_wikiCraftProductType.id_wikiCraftProductType }}">
-                        <div class="wiki_record_name">Název: {{ wiki_record.name }}</div>
-                        {% if  wiki_record.id_map_coordinate %}
-                        <div class="wiki_record_coordinates">Koordináty: {{ wiki_record.id_map_coordinate }}</div>
-                        {% endif %}
-                        <div class="wiki_record_coordinates">Typ: {{  wiki_record.id_wikiCraftProductType.name }}</div>
-                    </div>
-                {% endfor %}
-
+            {% for wiki_record in wiki_content %}
+                <div class="wiki_record_row" id="{{ wiki_record.id_wikiItem }}" name="{{ wiki_record.id_wikiCraftProductType.id_wikiCraftProductType }}">
+                    <div class="wiki_record_name">Název: {{ wiki_record.name }}</div>
+                    {% if  wiki_record.id_map_coordinate %}
+                    <div class="wiki_record_coordinates">Koordináty: {{ wiki_record.id_map_coordinate }}</div>
+                    {% endif %}
+                    <div class="wiki_record_coordinates">Typ: {{  wiki_record.id_wikiCraftProductType.name }}</div>
+                </div>
+            {% endfor %}
             </div>
 
             <div class="items_right_content">
@@ -32,7 +33,7 @@
                     Náhled
                 </div>
             </div>
-
+        {% endif %}
     {% endif %}
         <script type="text/javascript">
         $(function () {
@@ -59,4 +60,4 @@
         })
 
         </script>
-        {% endblock %}
+{% endblock %}

@@ -9,7 +9,7 @@ import json
 
 
 def index(request):
-    return render(request, 'index_page_wiki.html')
+    return render(request, 'index_page_wiki.html', {'wiki_menu': True})
 
 
 def items(request):
