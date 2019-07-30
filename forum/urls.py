@@ -6,4 +6,6 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'(?P<id_category>\d+)/$', views.topic_overview, name='topic'),
     url(r'(?P<id_category>\d+)/(?P<id_topic>\d+)$', views.topic, name='topic'),
+
+    url(r'topic/new/(?P<id_category>\d+)', views.new_topic, name='new_topic'),
 ]

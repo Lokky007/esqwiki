@@ -4,6 +4,7 @@ from django.shortcuts import render
 from forum.models import CategoryBlock, Category, Topic, Answer
 from extension.popup.popup_window import popup
 from forms import NewPost
+from django.http import HttpResponse, JsonResponse
 
 # Categorie a kategory block
 def index(request):
@@ -25,8 +26,9 @@ def index(request):
 def topic_overview(request, id_category):
     new_post_form = NewPost()
 
-    window = popup()
-    window.set_form(new_post_form, 'Nový příspěvek', 'Název')
+    window = popup(request)
+    window.set_form(new_post_form, 'Nový příspěvek', 'new_topic')
+    window.set_url_params({'id_category': 1})
     window_html = window.create()
 
     topic_data = Topic.objects.filter(category=id_category, deleted=0)
@@ -44,3 +46,16 @@ def topic(request,id_category, id_topic):
         'answer_data': answer_data,
         'topic_data': topic_data,
     })
+
+
+def new_topic(request, id_category):
+    if request.method == 'POST':
+        new_post = NewPost(request.POST)
+        if new_post.is_valid():
+            name = new_post.cleaned_data.get("name")
+            text = new_post.cleaned_data.get("text")
+            record = Topic(name=name, text=text, category_id=id_category, x_user_id=request.user.id)
+            record.save()
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'error': True})
