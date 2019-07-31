@@ -2,18 +2,26 @@
 {% load staticfiles %}
 
 {% block content %}
-    <a href="">Nové příspěvek</a>
+    {{ popup_window }}
 
     {% if topic_data %}
         {% for topic in topic_data %}
             <div class="topic_block" data-toggle="tooltip" data-placement="right" title="{{ topic.text }}">
-                <a href="{{ topic.category_id }}{{ topic.id }}">
+                <a href="{{ topic.id_topic }}">
                     <span  data-toggle="tooltip" data-placement="right" title="{{ topic.text }}">{{ topic.name }}</span>
                 </a>
-                <span class="float-right">{{ topic.x_created }}</span>
+                <div class="d-inline-block float-right margin-left-20">
+                    <span class=""><b>Odpovědí:</b></span><span class="float-right">{{ topic.count_answers }}</span><br>
+                    <span class=""><b>Poslední:</b></span><span class="float-right">{{ topic.last_answers_data.x_created }}</span>
+                </div>
+                <div class="d-inline-block float-right">
+                    <span class=""><b>Autor:</b></span><span class="float-right">{{ topic.x_user }}</span><br>
+                    <span class=""><b>Vytvořeno:</b></span><span class="float-right">{{ topic.x_created|date:'H:i j.n Y' }}</span>
+                </div>
             </div>
         {% endfor %}
+    {% else %}
+            No data
     {% endif %}
-        {{ popup_window }}
 
 {% endblock %}

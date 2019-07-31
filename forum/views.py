@@ -28,7 +28,7 @@ def topic_overview(request, id_category):
 
     window = popup(request)
     window.set_form(new_post_form, 'Nový příspěvek', 'new_topic')
-    window.set_url_params({'id_category': 1})
+    window.set_url_params({'id_category': id_category})
     window_html = window.create()
 
     topic_data = Topic.objects.filter(category=id_category, deleted=0)
@@ -38,7 +38,7 @@ def topic_overview(request, id_category):
     })
 
 
-def topic(request,id_category, id_topic):
+def topic(request, id_category, id_topic):
     topic_data = Topic.objects.filter(id_topic=id_topic, deleted=0)
     answer_data = Answer.objects.filter(topic=id_topic, deleted=0)
 
