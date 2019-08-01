@@ -48,7 +48,7 @@ class Topic(models.Model):
 
     @property
     def count_answers(self):
-        return Answer.objects.filter(topic_id=self.id_topic).count()
+        return Answer.objects.filter(topic_id=self.id_topic, deleted=0).count()
 
     @property
     def last_answers_data(self):

@@ -47,7 +47,7 @@ def topic(request, id_category, id_topic):
     topic_data = Topic.objects.filter(id_topic=id_topic, deleted=0)
     answer_data = Answer.objects.filter(topic=id_topic, deleted=0)
     new_answer_post = new_answer(request, id_category, id_topic)
-    return render(request, 'forum_topic.html',{
+    return render(request, 'forum_topic.html', {
         'answer_data': answer_data,
         'topic_data': topic_data,
         'id_category': id_category,
@@ -70,17 +70,16 @@ def new_answer(request, id_category=0, id_topic=0):
 
 
 # delete function for move answer or post to history
-def delete_answer(request, id_category, id_topic, id_answer):
-    a ='!!'
+def delete_answer(request, id_answer):
     if request.method == 'GET':
         answer = Answer.objects.get(id_answer=id_answer)
         answer.deleted = True
         answer.save()
         messages.success(request, 'Smazání proběhlo úspěšně.')
-    return redirect(reverse('topic', kwargs={
-        "id_category": id_category,
-        "id_topic": id_topic,
-    }))
+        return redirect(reverse('topic', kwargs={
+            "id_category": answer.topic.category_id,
+            "id_topic": answer.topic_id,
+        }))
 
 
 # called from ajax

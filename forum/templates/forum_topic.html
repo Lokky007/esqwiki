@@ -2,6 +2,12 @@
 {% load staticfiles %}
 
 {% block content %}
+    <div class="d-inline-block margin-bottom-20 forum_navbar" >
+        <span>></span>
+        <a href="{% url 'main_forum' %}">Hlavní stránka fóra</a>
+        <span>></span>
+        <a href="{% url 'topic_overview' id_category=id_category%}">Přehled vláken v kategorii</a>
+    </div>
 
     {% if topic_data %}
 
@@ -29,7 +35,7 @@
                     </div>
                     <div>
                        <a href="">Reagovat</a>
-                        <a href="{% url 'delete_answer' id_category=id_category id_topic=id_topic id_answer=answer.id_answer %}">Smazat</a>
+                        <a href="{% url 'delete_answer' id_answer=answer.id_answer %}">Smazat</a>
                     </div>
                 </div>
             {% endfor %}
