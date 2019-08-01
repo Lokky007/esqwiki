@@ -52,8 +52,8 @@ class Topic(models.Model):
 
     @property
     def last_answers_data(self):
-        if Answer.objects.filter(topic_id=self.id_topic).exists():
-            return Answer.objects.filter(topic_id=self.id_topic).order_by('-x_created')[0]
+        if Answer.objects.filter(topic_id=self.id_topic, deleted=0).exists():
+            return Answer.objects.filter(topic_id=self.id_topic, deleted=0).order_by('-x_created')[0]
         return None;
 
 

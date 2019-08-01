@@ -3,10 +3,14 @@
 from django.shortcuts import render
 from forum.models import CategoryBlock, Category, Topic, Answer
 from extension.popup.popup_window import popup
-from forms import NewPost
-from django.http import HttpResponse, JsonResponse
+from forms import NewPost, AnswerOnPost
+from django.http import JsonResponse
+from django.contrib import messages
+from django.urls import reverse
+from django.shortcuts import redirect
 
-# Categorie a kategory block
+
+# Category block
 def index(request):
     category_array = []
     category_block_data = CategoryBlock.objects.filter(show=1)
@@ -38,16 +42,48 @@ def topic_overview(request, id_category):
     })
 
 
+# detail of topic with response threat
 def topic(request, id_category, id_topic):
     topic_data = Topic.objects.filter(id_topic=id_topic, deleted=0)
     answer_data = Answer.objects.filter(topic=id_topic, deleted=0)
-
+    new_answer_post = new_answer(request, id_category, id_topic)
     return render(request, 'forum_topic.html',{
         'answer_data': answer_data,
         'topic_data': topic_data,
+        'id_category': id_category,
+        'id_topic': id_topic,
+        'new_answer_post': new_answer_post
     })
 
 
+# answer form in topic detail
+def new_answer(request, id_category=0, id_topic=0):
+    if request.method == 'POST':
+        new_answer_post = AnswerOnPost(request.POST)
+        if new_answer_post.is_valid():
+            text = new_answer_post.cleaned_data.get("text")
+            if text:
+                answer = Answer(text=text, topic_id=id_topic, x_user_id=request.user.id)
+                answer.save()
+
+    return AnswerOnPost()
+
+
+# delete function for move answer or post to history
+def delete_answer(request, id_category, id_topic, id_answer):
+    a ='!!'
+    if request.method == 'GET':
+        answer = Answer.objects.get(id_answer=id_answer)
+        answer.deleted = True
+        answer.save()
+        messages.success(request, 'Smazání proběhlo úspěšně.')
+    return redirect(reverse('topic', kwargs={
+        "id_category": id_category,
+        "id_topic": id_topic,
+    }))
+
+
+# called from ajax
 def new_topic(request, id_category):
     if request.method == 'POST':
         new_post = NewPost(request.POST)

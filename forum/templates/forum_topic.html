@@ -23,13 +23,46 @@
             {% for answer in answer_data %}
                 <div class="topic_category_block">
                     {{ answer.text }}
+                    <div class="float-right">
+                        <span>{{ answer.x_user.username }}</span>
+                        <span>{{ answer.x_created|date:'H:i j.n Y' }}</span>
+                    </div>
                     <div>
-                        <a href="">Reagovat</a>
-                        <a href="forum_base.html">Smazat</a>
+                       <a href="">Reagovat</a>
+                        <a href="{% url 'delete_answer' id_category=id_category id_topic=id_topic id_answer=answer.id_answer %}">Smazat</a>
                     </div>
                 </div>
             {% endfor %}
         {% endif %}
     {% endif %}
+
+    <button onclick="show_form()">Odpověd</button>
+
+    <div id="answer_form" style="display: None;">
+          <form action="{% url 'new_answer' id_category=id_category id_topic=id_topic %}" method="post" >
+             {% csrf_token %}
+            {{ new_answer_post }}
+            <button type="submit" class="save btn btn-default">Odeslat</button>
+          </form>
+    </div>
+
+    <script>
+        function show_form()
+        {
+            var x = document.getElementById("answer_form");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+        }
+
+        function hide_form()
+        {
+
+        }
+
+
+    </script>
 
 {% endblock %}
