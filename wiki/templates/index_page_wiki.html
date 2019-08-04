@@ -5,11 +5,10 @@
     {% if wiki_menu %}
 
             <div class="wiki_type_content_overview">
-                <a href="/wiki/items/"><div class="wiki_type_item">Suroviny</div></a>
-                <a href="/wiki/blacksmithy/"><div class="wiki_type_item">Kovarstvi</div></a>
-                <a href="/wiki/alchemy/"><div class="wiki_type_item">Alchymie</div></a>
-                <a href="/wiki/engeneering/"><div class="wiki_type_item">Rezbarstvi</div></a>
-                <a href="/wiki/tailoring/"><div class="wiki_type_item">Krejcovstvi</div></a>
+            <a href="/wiki/items/0/"><div class="wiki_type_item">Items</div></a>
+            {% for craft in crafts_list %}
+                <a href="/wiki/items/{{ craft.id_wikiCraftProductType }}/"><div class="wiki_type_item">{{ craft.name }}</div></a>
+            {% endfor %}
             </div>
 
     {% else %}

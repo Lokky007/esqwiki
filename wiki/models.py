@@ -9,6 +9,7 @@ def get_image_path(instance, filename):
     return os.path.join('image', str(instance.id), filename)
 
 
+# Blacksmithy
 class WikiCraftProductType(models.Model):
     id_wikiCraftProductType = models.AutoField(primary_key=True)
     name = models.CharField(max_length=64)
@@ -17,6 +18,7 @@ class WikiCraftProductType(models.Model):
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 
+# Iron ore
 class WikiItem(models.Model):
     id_wikiItem = models.AutoField(primary_key=True)
     id_map_coordinate = models.IntegerField(default=None, blank=True, null=True)
@@ -31,19 +33,7 @@ class WikiItem(models.Model):
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 
-
-"""
-class WikiProductItem(models.Model):
-    id_wikiProductItem = models.AutoField(primary_key=True)
-    id_wikiCraftProduct = models.ForeignKey(WikiCraftProduct, blank=True, null=True)
-    id_wikiItems = models.ForeignKey(WikiItem, blank=True, null=True)
-    count = models.IntegerField(default=1)
-    x_created = models.DateTimeField(auto_now_add=True)
-    x_modified = models.DateTimeField(auto_now=True)
-    x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
-"""
-
-
+# Shield
 class WikiCraftProduct(models.Model):
     id_wikiCraftProduct = models.AutoField(primary_key=True)
     id_wikiItem = models.ManyToManyField(WikiItem)
