@@ -6,7 +6,12 @@ from django.shortcuts import render_to_response
 def prepare_data_detail_view(request):
     try:
         id = int(request.POST['record_id'])
-        records = WikiItem.objects.get(deleted=0, id_wikiItem=id)
+        type_id = int(request.POST['type_product_id'])
+
+        if type_id == 0:
+            records = WikiItem.objects.filter(deleted=0, id_wikiItem=id)
+        else:
+            records = WikiCraftProduct.objects.filter(deleted=0, id_wikiCraftProduct=id, id_wikiCraftProductType=type_id)
     except:
         records = None
 

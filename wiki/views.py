@@ -14,7 +14,10 @@ def index(request):
 
 def items(request):
     records = WikiItem.objects.filter(deleted=0).order_by('name')
-    return render(request, 'index_page_wiki.html', {'wiki_content': records})
+    return render(request, 'index_page_wiki.html', {
+        'wiki_content': records,
+        'wiki_content_type': 0
+    })
 
 
 def items_preview(request):
@@ -23,22 +26,33 @@ def items_preview(request):
 
 def blacksmithy(request):
     records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=1).order_by('name')
-    return render(request, 'index_page_wiki.html', {'wiki_content': records})
+    return render(request, 'index_page_wiki.html', {
+        'wiki_content': records,
+        'wiki_content_type': 1
+    })
 
 
 def alchemy(request):
     records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=2).order_by('name')
-    return render(request, 'index_page_wiki.html', {'wiki_content': records})
+    return render(request, 'index_page_wiki.html', {
+        'wiki_content': records,
+        'wiki_content_type': 2})
 
 
 def tailoring(request):
     records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=3).order_by('name')
-    return render(request, 'index_page_wiki.html', {'wiki_content': records})
+    return render(request, 'index_page_wiki.html', {
+        'wiki_content': records,
+        'wiki_content_type': 3
+    })
 
 
 def engeneering(request):
     records = WikiCraftProduct.objects.filter(id_wikiCraftProductType=4).order_by('name')
-    return render(request, 'index_page_wiki.html', {'wiki_content': records})
+    return render(request, 'index_page_wiki.html', {
+        'wiki_content': records,
+        'wiki_content_type': 4
+    })
 
 @csrf_exempt
 def content_for_dynamic_preview(request):

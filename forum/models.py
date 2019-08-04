@@ -54,7 +54,7 @@ class Topic(models.Model):
     def last_answers_data(self):
         if Answer.objects.filter(topic_id=self.id_topic, deleted=0).exists():
             return Answer.objects.filter(topic_id=self.id_topic, deleted=0).order_by('-x_created')[0]
-        return None;
+        return None
 
 
 class Answer(models.Model):
@@ -67,6 +67,7 @@ class Answer(models.Model):
     x_created = models.DateTimeField(auto_now_add=True)
     x_modified = models.DateTimeField(auto_now=True)
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
+
 
 
 

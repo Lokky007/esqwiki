@@ -80,3 +80,12 @@ def answer(request, id_post):
             record = posts(text=text, id_board_post_parent=id_post, x_user_id=request.user.id)
             record.save()
     return redirect('/board/')
+
+
+def comment(request, id_post):
+    if request.method == 'POST':
+        text = request.POST['text']
+        if text:
+            record = questions(text=text, id_question_post_parent=id_post, x_user_id=request.user.id)
+            record.save()
+    return redirect('/board/')

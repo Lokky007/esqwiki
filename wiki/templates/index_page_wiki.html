@@ -14,11 +14,11 @@
 
     {% else %}
         {% if not wiki_content %}
-                <div class="">No records</div>
+                <div class="wiki_record_row">No records</div>
         {% else %}
             <div class="items_left_content">
             {% for wiki_record in wiki_content %}
-                <div class="wiki_record_row" id="{{ wiki_record.id_wikiItem }}" name="{{ wiki_record.id_wikiCraftProductType.id_wikiCraftProductType }}">
+                <div class="wiki_record_row" id="{{ wiki_record.pk }}" name="{{ wiki_record.pk }}">
                     <div class="wiki_record_name">Název: {{ wiki_record.name }}</div>
                     {% if  wiki_record.id_map_coordinate %}
                     <div class="wiki_record_coordinates">Koordináty: {{ wiki_record.id_map_coordinate }}</div>
@@ -35,6 +35,7 @@
             </div>
         {% endif %}
     {% endif %}
+
         <script type="text/javascript">
         $(function () {
             $('.wiki_record_row').on('click', function () {
@@ -47,7 +48,8 @@
                 url: '/wiki/items_preview/',
                 data: {
                     csrfmiddlewaretoken: '{{ csrf_token }}',
-                    record_id: record_id
+                    record_id: record_id,
+                    type_product_id: {{ wiki_content_type }}
                 },
 
                 success: function (json) {
