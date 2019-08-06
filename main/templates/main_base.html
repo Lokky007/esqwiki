@@ -14,14 +14,48 @@
                     </span>
             {% else %}
                     <table class="width_100p">
-                        {% for record in newest_records %}
-                            <tr>
-                                <td class="width_35p">{{ record.0 }}</td>
-                                <td class="width_35p">{{ record.1 }}</td>
-                                <td class="width_35p">{{ record.2 | date:'H:i j.n.Y ' }}</td>
-                                <td class="width_35p">{{ record.3 }}</td>
-                            </tr>
-                        {% endfor %}
+                        <h5 >Items</h5>
+                        {% if not newest_records.items %}
+                            No record
+                        {% else %}
+                            {% for items in newest_records.items %}
+                                <tr>
+                                    <td class="width_55p">{{ items.name }}</td>
+                                    <td class="width_35p">{{ items.x_created | date:'H:i j.n.Y ' }}</td>
+                                    <td class="width_35p">{{ items.x_user.username }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+
+                    <table class="width_100p">
+                        <h5 >Products</h5>
+                        {% if not newest_records.products %}
+                            No record
+                        {% else %}
+                             {% for record in newest_records.products %}
+                                    <tr>
+                                        <td class="width_55p">{{ record.name }}</td>
+                                        <td class="width_35p">{{ record.x_created | date:'H:i j.n.Y ' }}</td>
+                                        <td class="width_35p">{{ record.x_user.username }}</td>
+                                    </tr>
+                             {% endfor %}
+                        {% endif %}
+                    </table>
+
+                    <table class="width_100p">
+                        <h5 >Forum</h5>
+                        {% if not newest_records.topic %}
+                                No record
+                        {% else %}
+                             {% for record in newest_records.topic %}
+                                    <tr>
+                                        <td class="width_55p">{{ record.name }}</td>
+                                        <td class="width_35p">{{ record.x_created | date:'H:i j.n.Y ' }}</td>
+                                        <td class="width_35p">{{ record.x_user.username }}</td>
+                                    </tr>
+                            {% endfor %}
+                        {% endif %}
                     </table>
             {% endif %}
         </div>

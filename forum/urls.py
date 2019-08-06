@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'topic/answer/(?P<id_category>\d+)/(?P<id_topic>\d+)$', views.new_answer, name='new_answer'),
     url(r'topic/answer/delete/(?P<id_answer>\d+)$', views.delete_answer,
         name='delete_answer'),
+    url(r'topic/new/reaction/(?P<id_answer>\d+)$', views.new_reaction, name='new_reaction'),
 ]

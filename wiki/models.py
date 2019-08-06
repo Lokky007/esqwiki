@@ -18,6 +18,7 @@ class WikiCraftProductType(models.Model):
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 
+
 # Iron ore
 class WikiItem(models.Model):
     id_wikiItem = models.AutoField(primary_key=True)
@@ -32,12 +33,15 @@ class WikiItem(models.Model):
     x_modified = models.DateTimeField(auto_now=True)
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
+    @property
+    def get_type_name(self):
+        return "Item"
+
 
 # Shield
 class WikiCraftProduct(models.Model):
     id_wikiCraftProduct = models.AutoField(primary_key=True)
     id_wikiItem = models.ManyToManyField(WikiItem)
-   # id_wikiProductItem = models.ForeignKey(WikiProductItem, blank=True, null=True)
     id_wikiCraftProductType = models.ForeignKey(WikiCraftProductType, blank=True, null=True)
     name = models.CharField(max_length=128)
     comment = models.CharField(max_length=2048)
@@ -48,6 +52,6 @@ class WikiCraftProduct(models.Model):
     x_modified = models.DateTimeField(auto_now=True)
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
-
-
-
+    @property
+    def get_type_name(self):
+        return WikiCraftProductType.objects.filter(id_wikiCraftProductType=self.id_wikiCraftProductType)

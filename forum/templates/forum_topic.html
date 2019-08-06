@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load filters %}
 
 {% block content %}
     <div class="d-inline-block margin-bottom-20 forum_navbar" >
@@ -34,11 +35,23 @@
                         <span>{{ answer.x_created|date:'H:i j.n Y' }}</span>
                     </div>
                     <div>
-                       <a href="">Reagovat</a>
+                       {{ window_html }}
                         <a href="{% url 'delete_answer' id_answer=answer.id_answer %}">Smazat</a>
+                        <a onclick="show_reaction_form({{answer.id_answer}})">Reagovat</a>
                     </div>
                 </div>
+                <!-- reaction -->
+                <div id="reaction_form_{{answer.id_answer}}" style="display: None;">
+                      <form action="{% url 'new_reaction' id_answer=answer.id_answer%}" method="post">
+                          <input type="hidden" name="csrfmiddlewaretoken" value="{{ addition_csrf_token }}">
+                            {% csrf_token %}
+                          {{ new_reaction_form }}
+                          <button type="submit" class="save btn btn-default">Odeslat</button>
+                     </form>
+                </div>
             {% endfor %}
+
+
         {% endif %}
     {% endif %}
 
@@ -63,10 +76,16 @@
               }
         }
 
-        function hide_form()
+        function show_reaction_form(id)
         {
-
+            var x = document.getElementById("reaction_form_"+id);
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
         }
+
 
 
     </script>

@@ -69,5 +69,15 @@ class Answer(models.Model):
     x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 
+class Reaction(models.Model):
+    id_reaction = models.AutoField(primary_key=True)
+    text = models.CharField(blank=False, null=False, max_length=2048)
+    like = models.IntegerField(default=0)
+    dislike = models.IntegerField(default=0)
+    deleted = models.BooleanField(default=False)
+    answer = models.ForeignKey(Answer)
+    x_created = models.DateTimeField(auto_now_add=True)
+    x_modified = models.DateTimeField(auto_now=True)
+    x_user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 

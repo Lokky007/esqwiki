@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render
-from forum.models import CategoryBlock, Category, Topic, Answer
+from forum.models import CategoryBlock, Category, Topic, Answer, Reaction
 from extension.popup.popup_window import popup
-from forms import NewPost, AnswerOnPost
+from forms import NewPost, AnswerOnPost, NewReaction
 from django.http import JsonResponse
 from django.contrib import messages
 from django.urls import reverse
@@ -35,7 +35,7 @@ def topic_overview(request, id_category):
     window.set_url_params({'id_category': id_category})
     window_html = window.create()
 
-    topic_data = Topic.objects.filter(category=id_category, deleted=0)
+    topic_data = Topic.objects.filter(category=id_category, deleted=0).order_by('-x_created')
     return render(request, 'forum_topic_overview.html', {
         'topic_data': topic_data,
         'popup_window': window_html
@@ -47,12 +47,17 @@ def topic(request, id_category, id_topic):
     topic_data = Topic.objects.filter(id_topic=id_topic, deleted=0)
     answer_data = Answer.objects.filter(topic=id_topic, deleted=0)
     new_answer_post = new_answer(request, id_category, id_topic)
+
+    new_reaction_form = new_reaction(request)
+
+
     return render(request, 'forum_topic.html', {
         'answer_data': answer_data,
         'topic_data': topic_data,
         'id_category': id_category,
         'id_topic': id_topic,
-        'new_answer_post': new_answer_post
+        'new_answer_post': new_answer_post,
+        'new_reaction_form': new_reaction_form
     })
 
 
@@ -94,3 +99,22 @@ def new_topic(request, id_category):
             return JsonResponse({'success': True})
         else:
             return JsonResponse({'error': True})
+
+
+# called from ajax
+def new_reaction(request, id_answer=0):
+    if request.method == 'POST':
+        new_reaction = NewReaction(request.POST)
+        if new_reaction.is_valid() and id_answer != 0:
+            text = new_reaction.cleaned_data.get("text")
+            answer = Answer.objects.get(id_answer=id_answer)
+            if text and answer:
+                record = Reaction(text=text, answer=answer, x_user_id=request.user.id)
+                record.save()
+                return redirect(reverse('topic', kwargs={
+                    "id_category": answer.topic.category_id,
+                    "id_topic": answer.topic_id,
+                }))
+            return NewReaction()
+    else:
+        return NewReaction()
