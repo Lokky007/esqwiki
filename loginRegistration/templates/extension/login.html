@@ -4,9 +4,11 @@
 {% block head %}Přihlášení{% endblock %}
 {% block content %}
 
-    <form class="form" method="post" action="" >
+    <form class="form" method="post" action="" style="display: inline-grid;" >
             {% csrf_token %}
             {{ loginForm }}
+                <br>
+                <br>
         <button type="submit"  value="Login" id="login-button">Přihlásit</button>
         <button type="button" onclick="window.location.href='/registration/' ">Registrovat</button>
         <input type="hidden" name="next" value="/home" />

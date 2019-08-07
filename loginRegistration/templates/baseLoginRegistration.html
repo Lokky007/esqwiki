@@ -14,11 +14,12 @@
 <body>
     <div class="wrapper">
         <div class="container">
-            <div class="registration">
-                <h1 style="width: 200px">{% block head %}{% endblock %}</h1>
-                <div class="display: inline-grid;">
+            <div class="registration middle_block">
+                <h1 style="width: 100%; text-align: center; ">{% block head %}{% endblock %}</h1>
+                <div style="text-align: center;">
                     {% block content %}{% endblock %}
                 </div>
+
             </div>
         </div>
     </div>
