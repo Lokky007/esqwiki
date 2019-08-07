@@ -46,6 +46,7 @@ def topic_overview(request, id_category):
 def topic(request, id_category, id_topic):
     topic_data = Topic.objects.filter(id_topic=id_topic, deleted=0)
     answer_data = Answer.objects.filter(topic=id_topic, deleted=0)
+    reaction_data = Reaction.objects.filter(answer__in=answer_data, deleted=0)
     new_answer_post = new_answer(request, id_category, id_topic)
 
     new_reaction_form = new_reaction(request)
@@ -54,6 +55,7 @@ def topic(request, id_category, id_topic):
     return render(request, 'forum_topic.html', {
         'answer_data': answer_data,
         'topic_data': topic_data,
+        'reaction_data': reaction_data,
         'id_category': id_category,
         'id_topic': id_topic,
         'new_answer_post': new_answer_post,

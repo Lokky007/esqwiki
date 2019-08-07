@@ -42,7 +42,7 @@ def prepare_data_questions_block():
     for record in records_questions:
         answer_array = []
         answers = questions.objects.filter(deleted=0, id_question_post_parent=record.id_question_post).order_by(
-            '-x_created')
+            'x_created')
         for answer in answers:
             answer_array.append(answer)
 

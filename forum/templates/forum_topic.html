@@ -21,6 +21,12 @@
 
             <div class="topic_category_block">
                 {{ topic.text }}
+             <div class="float-right">
+                        <div class="">
+                            <span>{{ topic.x_user.username }}</span>
+                            <span>{{ topic.x_created|date:'H:i j.n Y' }}</span>
+                        </div>
+                    </div>
             </div>
         {% endfor %}
 
@@ -31,15 +37,34 @@
                 <div class="topic_category_block">
                     {{ answer.text }}
                     <div class="float-right">
-                        <span>{{ answer.x_user.username }}</span>
-                        <span>{{ answer.x_created|date:'H:i j.n Y' }}</span>
+                        <div class="">
+                            <span>{{ answer.x_user.username }}</span>
+                            <span>{{ answer.x_created|date:'H:i j.n Y' }}</span>
+                        </div>
                     </div>
-                    <div>
-                       {{ window_html }}
-                        <a href="{% url 'delete_answer' id_answer=answer.id_answer %}">Smazat</a>
-                        <a onclick="show_reaction_form({{answer.id_answer}})">Reagovat</a>
-                    </div>
+                        <div class="">
+                           {{ window_html }}
+                            <a onclick="show_reaction_form({{answer.id_answer}})">Reagovat</a>
+                            <a href="{% url 'delete_answer' id_answer=answer.id_answer %}">Smazat</a>
+                        </div>
                 </div>
+
+                    {% if reaction_data %}
+                        {% for reaction in reaction_data %}
+                            {% if reaction.answer_id == answer.id_answer%}
+                                <div>
+                                     <div class="topic_reaction_block">
+                                        {{ reaction.text }}
+                                        <span class="float-right">{{ reaction.x_created|date:'H:i j.n Y' }}</span>
+                                        <span class="float-right">{{ reaction.x_user.username }}</span>
+
+                                    </div>
+                                 </div>
+                            {% endif %}
+
+                        {% endfor %}
+                    {% endif %}
+
                 <!-- reaction -->
                 <div id="reaction_form_{{answer.id_answer}}" style="display: None;">
                       <form action="{% url 'new_reaction' id_answer=answer.id_answer%}" method="post">

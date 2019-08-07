@@ -107,7 +107,9 @@ DATABASES = {
     }
 }
 
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'djangobb_forum.context_processors.forum_settings',
+    )
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
