@@ -3,15 +3,15 @@
 
 {% block content %}
     {% if wiki_menu %}
-
             <div class="wiki_type_content_overview">
-            <a href="/wiki/items/0/"><div class="wiki_type_item">Items</div></a>
+            <!--<a href="/wiki/items/1/"><div class="wiki_type_item">Items</div></a>-->
             {% for craft in crafts_list %}
                 <a href="/wiki/items/{{ craft.id_wikiCraftProductType }}/"><div class="wiki_type_item">{{ craft.name }}</div></a>
             {% endfor %}
             </div>
 
     {% else %}
+        <a href="{% url 'items_new_record' id_type=wiki_content_type %}">Nový item</a>
         {% if not wiki_content %}
                 <div class="wiki_record_row">No records</div>
         {% else %}

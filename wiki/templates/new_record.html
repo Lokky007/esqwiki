@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="wiki_record_row">
+
+            <form action="" class="d-grid" method="post">
+                {% csrf_token %}
+                {{ new_record }}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+{% endblock%}

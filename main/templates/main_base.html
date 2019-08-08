@@ -50,7 +50,7 @@
                         {% else %}
                              {% for record in newest_records.topic %}
                                     <tr>
-                                        <td class="width_55p">{{ record.name }}</td>
+                                        <td class="width_55p"><a href="{% url "topic" id_category=record.category.id_category id_topic=record.id_topic %}">{{ record.name }}</a></td>
                                         <td class="width_35p">{{ record.x_created | date:'H:i j.n.Y ' }}</td>
                                         <td class="width_35p">{{ record.x_user.username }}</td>
                                     </tr>
