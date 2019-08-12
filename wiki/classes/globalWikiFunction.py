@@ -20,5 +20,5 @@ def prepare_data_detail_view(request):
     return records
 
 
-def prepare_html_detail_view(data):
-    return render_to_response('detail_item_wiki.html', {'content': data})
+def prepare_html_detail_view(data, request):
+    return render_to_response('detail_item_wiki.html', {'content': data, 'url': request})

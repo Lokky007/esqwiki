@@ -1,7 +1,9 @@
 <div>
     {% if content %}
         {% for item in content %}
-            <img src="{{ request.path }}{{ item.image }}" alt="HTML5 Icon" width="128" height="128">
+            <div>
+                <img src="{{ request.path }}/media/{{ item.image }}" alt="HTML5 Icon" width="128" height="128">
+            </div>
             <span>{{ item.name }}</span> <br />
             <span>{{ item.comment }}</span>  <br />
             <span>{{ item.id_map_coordinate }}</span>  <br />

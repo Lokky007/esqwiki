@@ -40,7 +40,7 @@ def items_preview(request):
 def content_for_dynamic_preview(request):
     response_data = {}
     data = wiki_function.prepare_data_detail_view(request)
-    response_data['message'] = wiki_function.prepare_html_detail_view(data).content
+    response_data['message'] = wiki_function.prepare_html_detail_view(data, request).content
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
