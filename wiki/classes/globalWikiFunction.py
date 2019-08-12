@@ -8,7 +8,7 @@ def prepare_data_detail_view(request):
         id = int(request.POST['record_id'])
         type_id = int(request.POST['type_product_id'])
 
-        if type_id == 0:
+        if type_id == 1:
             records = WikiItem.objects.filter(deleted=0, id_wikiItem=id)
         else:
             records = WikiCraftProduct.objects.filter(deleted=0, id_wikiCraftProduct=id, id_wikiCraftProductType=type_id)

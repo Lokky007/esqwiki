@@ -4,6 +4,8 @@ import wiki.classes.globalWikiFunction as wiki_function
 from django.views.decorators.csrf import csrf_exempt
 from wiki.forms import WikiNewRecord
 from django.http import HttpResponse
+from django.contrib import messages
+
 import json
 
 # Create your views here.
@@ -45,24 +47,23 @@ def content_for_dynamic_preview(request):
 
 def items_new_record(request, id_type):
     id_type = int(id_type)
-
+    wiki_new_record = WikiNewRecord(request.POST or None, request.FILES or None)
     if request.method == 'POST':
-        wiki_new_record = WikiNewRecord(request.POST)
         if id_type == 1:
             add_item(request, wiki_new_record, id_type)
 
     wiki_new_record = WikiNewRecord()
     return render(request, 'new_record.html', {
-        'new_record': wiki_new_record
+        'new_record': wiki_new_record,
     })
 
 
 def add_item(request, wiki_new_record, id_type):
     if wiki_new_record.is_valid():
-        name = wiki_new_record.cleaned_data.get("name")
-        unique_item = wiki_new_record.cleaned_data.get("unique_item")
-        comment = wiki_new_record.cleaned_data.get("comment")
-        image = wiki_new_record.cleaned_data.get("image")
+        name = request.POST.get('name', "")
+        unique_item = request.POST.get('unique_item', 0)
+        comment = request.POST.get('comment', "")
+        image = request.FILES['image']
 
         wiki_type = WikiCraftProductType.objects.get(id_wikiCraftProductType=id_type)
 
@@ -70,3 +71,5 @@ def add_item(request, wiki_new_record, id_type):
                                  unique_item=unique_item, comment=comment, image=image,
                                  deleted=0, x_user=request.user)
         new_wiki_item.save()
+    else:
+        messages.error(request, "Wrong format")

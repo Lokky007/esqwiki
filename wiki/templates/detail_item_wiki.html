@@ -1,10 +1,13 @@
 <div>
     {% if content %}
-        <img src="{{ content.image }}" alt="HTML5 Icon" width="128" height="128">
-        <span>{{ content.name }}</span> <br />
-        <span>{{ content.comment }}</span>  <br />
-        <span>{{ content.id_map_coordinate }}</span>  <br />
-        <span>{{ content.id_wikiCraftProductType.name }}</span>  <br />
+        {% for item in content %}
+            <img src="{{ request.path }}{{ item.image }}" alt="HTML5 Icon" width="128" height="128">
+            <span>{{ item.name }}</span> <br />
+            <span>{{ item.comment }}</span>  <br />
+            <span>{{ item.id_map_coordinate }}</span>  <br />
+            <span>{{ item.id_wikiCraftProductType.name }}</span>  <br />
+        {% endfor %}
+
     {% else %}
         <span> No data</span>
     {% endif %}

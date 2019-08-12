@@ -11,7 +11,9 @@
             </div>
 
     {% else %}
-        <a href="{% url 'items_new_record' id_type=wiki_content_type %}">Nový item</a>
+        <div>
+            <a class="button" href="{% url 'items_new_record' id_type=wiki_content_type %}">Nový item</a>
+        </div>
         {% if not wiki_content %}
                 <div class="wiki_record_row">No records</div>
         {% else %}

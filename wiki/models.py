@@ -6,7 +6,7 @@ import os
 
 
 def get_image_path(instance, filename):
-    return os.path.join('image', str(instance.id), filename)
+    return instance.id_wikiCraftProductType.name + "/" + filename
 
 
 # Blacksmithy

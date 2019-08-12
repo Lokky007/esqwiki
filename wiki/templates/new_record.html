@@ -3,8 +3,12 @@
 
 {% block content %}
     <div class="wiki_record_row">
-
-            <form action="" class="d-grid" method="post">
+          {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+            <form action="" class="d-grid" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ new_record }}
             <input type="submit" value="Submit" />
