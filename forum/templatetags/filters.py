@@ -8,3 +8,14 @@ register = template.Library()
 def add_params(value, arg):
     """Removes all values of arg from the given string"""
     return mark_safe(value.replace('0000', str(arg)))
+
+
+@register.filter(name='userDetail')
+def user_detail(value):
+    return url
+
+
+@register.filter(name='guildDetail')
+def guild_detail(value, arg):
+    return
+

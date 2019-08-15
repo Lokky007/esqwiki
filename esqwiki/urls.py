@@ -22,5 +22,6 @@ urlpatterns = [
     url('^trade/', include("trade.urls"), name='trade'),
     url('^forum/', include("forum.urls"), name='forum'),
     url('^map/', include("worldmap.urls"), name='worldmap'),
+    url('^detail/', include('userGuildDetail.urls', namespace="userGuildDetail")),
 
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

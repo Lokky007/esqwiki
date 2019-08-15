@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'forum.apps.ForumConfig',
     'worldmap.apps.WorldmapConfig',
     'loginRegistration.apps.LoginregistrationConfig',
+    'userGuildDetail.apps.UserguilddetailConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

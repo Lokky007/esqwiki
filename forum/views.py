@@ -105,9 +105,10 @@ def new_topic(request, id_category):
 
 # called from ajax
 def new_reaction(request, id_answer=0):
-    if request.method == 'POST':
+    id_answer = int(id_answer)
+    if request.method == 'POST' and id_answer != 0:
         new_reaction = NewReaction(request.POST)
-        if new_reaction.is_valid() and id_answer != 0:
+        if new_reaction.is_valid():
             text = new_reaction.cleaned_data.get("text")
             answer = Answer.objects.get(id_answer=id_answer)
             if text and answer:
