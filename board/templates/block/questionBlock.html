@@ -20,7 +20,7 @@
                     <div class="opacity_05 d-inline-block">
                         <span>#{{ record.0.id_question_post }}</span>
                     </div>
-                    <div class="float-right d-inline-block">
+                    <div class="opacity_05 float-right d-inline-block">
                         <span>{{ record.0.x_created |date:"G:i j.n.Y" }}</span>
                         <span> {{ record.0.x_user.username }}</span>
                     </div>
@@ -45,9 +45,10 @@
                     <div class="board_line"></div>
                     {% for answer in record.1 %}
                         <span><b>{{ answer.text }}</b></span>
-                        <span class="float-right">{{ answer.x_user }}</span>
-                        <span class="float-right">{{ answer.x_created |date:"G:i j.n" }}</span>
-                        <br>
+                        <div class="opacity_05  d-inline-block float-right">
+                            <span class="float-right">{{ answer.x_user }}</span>
+                            <span class="float-right">{{ answer.x_created |date:"G:i j.n" }}</span>
+                        </div>
                     {% endfor %}
                 {% endif %}
                 </div>
