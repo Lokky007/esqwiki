@@ -1,0 +1,106 @@
+
+<button class="board_add_new_record_button" onclick="showQuestionBlock()">Form</button>
+<!-- form -->
+<div id="questionBlock" style="display: none">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ help_new_post }}
+        <input type="submit" value="Submit" name="question"/>
+    </form>
+</div>
+
+
+{% if not board_records %}
+    <div class="board_content_record width_100p">
+        <strong>No records</strong>
+    </div>
+{% else %}
+    {% for record in board_records %}
+                <div class="board_content_record" id="{{ record.0.id_question_post }}_board_content_record">
+                    <div class="opacity_05 d-inline-block">
+                        <span>#{{ record.0.id_question_post }}</span>
+                    </div>
+                    <div class="float-right d-inline-block">
+                        <span>{{ record.0.x_created |date:"G:i j.n.Y" }}</span>
+                        <span> {{ record.0.x_user.username }}</span>
+                    </div>
+                    <br>
+                    <b>{{ record.0.text }}</b>
+                    {% if user.id %}
+                        <div class="text-right">
+                            <a href="#" onclick="prepareAnswerForm({{ record.0.id_question_post }})">Odpovedet</a>
+                            {% if user.id == record.0.x_user_id %}
+                                <a href="/board/delete/{{ record.0.id_question_post }}">Smazat</a>
+                            {% endif %}
+                            <a HREF="#">Zprava</a>
+                        </div>
+                    {% endif %}
+
+                <!--
+                Answer form for question
+                -->
+
+                <div id="{{ record.0.id_question_post }}_answer"></div>
+                {% if record.1 %}
+                    <div class="board_line"></div>
+                    {% for answer in record.1 %}
+                        <span><b>{{ answer.text }}</b></span>
+                        <span class="float-right">{{ answer.x_user }}</span>
+                        <span class="float-right">{{ answer.x_created |date:"G:i j.n" }}</span>
+                        <br>
+                    {% endfor %}
+                {% endif %}
+                </div>
+                {% endfor %}
+
+        {% endif %}
+
+<script>
+    function closeAnswerForm(id){
+        document.getElementById(id + "_answer").innerHTML = "";
+    }
+    function prepareAnswerForm(id){
+        closeAnswerForm(id);
+        var answer = document.getElementById(id + "_answer");
+
+        var form = document.createElement("form");
+        var element = document.createElement("input");
+        var button = document.createElement("button");
+        var cancel = document.createElement("button");
+
+        element.name="text";
+
+        button.setAttribute("type", "submit");
+        button.innerHTML = "Odeslat";
+
+        cancel.setAttribute("type", "button");
+        cancel.innerHTML = "Storno";
+        cancel.setAttribute("onclick", "closeAnswerForm("+id+")");
+
+        var z = document.createElement('input'); // is a node
+        z.value = jQuery("[name=csrfmiddlewaretoken]").val();
+        z.name = "csrfmiddlewaretoken";
+        z.setAttribute("type", "hidden");
+        form.appendChild(z);
+
+        form.method = "POST";
+        form.action = "/board/writeComment/"+id+"/";
+
+        form.appendChild(element);
+        form.appendChild(button);
+        form.appendChild(cancel);
+
+        answer.appendChild(form);
+    }
+
+    function showQuestionBlock()
+    {
+        var x = document.getElementById("questionBlock");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>

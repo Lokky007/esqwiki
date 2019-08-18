@@ -26,7 +26,10 @@
         {% else %}
             {% for record in questions_records %}
                 <div class="board_content_record" id="{{ record.id_board_post }}_board_content_record">
+
+                    <div class="">
                     <p>{{ record.x_created|date:'H:i j.n Y' }} {{ record.x_user.username  }}</p>
+                    </div>
                     <b>{{ record.text }}</b>
                     {% if user.is_authenticated %}
                         <div class="">

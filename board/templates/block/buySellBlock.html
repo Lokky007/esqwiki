@@ -1,0 +1,131 @@
+{% load filters %}
+
+<button class="board_add_new_record_button" onclick="showBuySellBlock()">Form</button>
+    <!-- form -->
+<div id="buySellBlock" style="display: none">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ sell_buy_new_post }}
+        <input type="submit" value="Submit" name="buySell"/>
+    </form>
+</div>
+
+
+{% if not sellBuy_records %}
+    <div class="board_content_record width_100p">
+        <strong>No recordsxxx</strong>
+    </div>
+{% else %}
+     {% for record in sellBuy_records %}
+                <div class="board_content_record" id="{{ record.0.id_board_post }}_board_content_record">
+                    <div>
+                        <div class="opacity_05 d-inline-block">
+                            <span>#{{ record.0.id_board_post }}</span>
+                        </div>
+                        <div class="float-right d-inline-block">
+                            <span>{{ record.0.x_created |date:"G:i j.n.Y" }} </span>
+                            <span>
+                                <a href=" {% url 'userGuildDetail:user_detail' id_user=record.0.x_user.id %} ">
+                                    {{ record.0.x_user.username }}
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <b>{{ record.0.text }}</b>
+                {% if user.id %}
+                    <div class="text-right">
+                        <a href="#" onclick="prepareCommentForm({{ record.0.id_board_post }})">Odpovedet</a>
+                        {% if user.id == record.0.x_user_id %}
+                            <a href="/board/delete/{{ record.0.id_board_post }}">Smazat</a>
+                        {% endif %}
+                        <a HREF="#">Zprava</a>
+                    </div>
+                {% endif %}
+
+                <!--
+                Answer form for question
+                -->
+
+                <div id="{{ record.0.id_board_post }}_comment"></div>
+                {% if record.1 %}
+                    <div class="board_line"></div>
+                    <div class="text-center">
+                        <span id="{{ record.0.id_board_post}}_showHideButton" onclick="showHideBuySellComment({{ record.0.id_board_post}})">Zobrazit</span>
+                    </div>
+                    <div id="{{ record.0.id_board_post}}_buySellComment" style="display:None;">
+                        {% for answer in record.1 %}
+                            <div>
+                                <span>{{ answer.x_created |date:"G:i j.n" }}</span>
+                                <span><b>{{ answer.text }}</b></span>
+                                <span class="float-right"><b>{{ answer.x_user }}</b></span>
+                            </div>
+                            <br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                </div>
+            {% endfor %}
+{% endif %}
+ <script>
+        function closeCommentForm(id){
+            document.getElementById(id + "_comment").innerHTML = "";
+        }
+        function prepareCommentForm(id){
+            closeCommentForm(id);
+            var answer = document.getElementById(id + "_comment");
+
+            var form = document.createElement("form");
+            var element = document.createElement("input");
+            var button = document.createElement("button");
+            var cancel = document.createElement("button");
+
+            element.name="text";
+
+            button.setAttribute("type", "submit");
+            button.innerHTML = "Odeslat";
+
+            cancel.setAttribute("type", "button");
+            cancel.innerHTML = "Storno";
+            cancel.setAttribute("onclick", "closeCommentForm("+id+")");
+
+            var z = document.createElement('input'); // is a node
+            z.value = jQuery("[name=csrfmiddlewaretoken]").val();
+            z.name = "csrfmiddlewaretoken";
+            z.setAttribute("type", "hidden");
+            form.appendChild(z);
+
+            form.method = "POST";
+            form.action = "/board/writeAnswer/"+id+"/";
+
+            form.appendChild(element);
+            form.appendChild(button);
+            form.appendChild(cancel);
+
+            answer.appendChild(form);
+        }
+
+        function showBuySellBlock()
+        {
+            var x = document.getElementById("buySellBlock");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+        }
+
+        function showHideBuySellComment(id)
+        {
+             var x = document.getElementById(id+"_buySellComment");
+             var x_button = document.getElementById(id+"_showHideButton");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+                x_button.innerHTML = "Skrýt";
+              } else {
+                x.style.display = "none";
+                x_button.innerHTML = "Zobrazit";
+              }
+        }
+
+
+    </script>
