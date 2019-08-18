@@ -106,6 +106,7 @@ ENV/
 env.bak/
 venv.bak/
 
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -1383,3 +1384,5 @@ worldmap/migrations/__init__.pyc
 worldmap/models.pyc
 worldmap/urls.pyc
 worldmap/views.pyc
+/.gitignore
+!/.gitignore
