@@ -25,6 +25,7 @@
                         <span> {{ record.0.x_user.username }}</span>
                     </div>
                     <br>
+
                     <b>{{ record.0.text }}</b>
                     {% if user.id %}
                         <div class="text-right">
@@ -44,22 +45,56 @@
                 {% if record.1 %}
                     <div class="board_line"></div>
                     {% for answer in record.1 %}
-                        <span><b>{{ answer.text }}</b></span>
-                        <div class="opacity_05  d-inline-block float-right">
-                            <span class="float-right">{{ answer.x_user }}</span>
-                            <span class="float-right">{{ answer.x_created |date:"G:i j.n" }}</span>
-                        </div>
+                            <div>
+                              {% if user.id == record.1.x_user_id %}
+                                <input type="checkbox" id="{{record.0.id_question_post}}"
+                                       name="selected_answer" value={{record.0.is_answer}}
+                                 class="select_right_answer">
+                              {% else %}
+                                <span class="padding_left_15"></span>
+                              {% endif %}
+
+                                <span><b>{{ answer.text }}</b></span>
+                                <div class="opacity_05  d-inline-block float-right">
+                                    <span class="float-right">{{ answer.x_user }}</span>
+                                    <span class="float-right">{{ answer.x_created |date:"G:i j.n" }}</span>
+                                </div>
+                            </div>
                     {% endfor %}
                 {% endif %}
                 </div>
+                <strong>
                 {% endfor %}
 
         {% endif %}
 
-<script>
+<script type="text/javascript">
+
+        $(function () {
+            $('.select_right_answer').on('click', function () {
+                var answer_id = $(this).attr('value');
+         $.ajax({
+                type:  "POST",
+                dataType: "json",
+                async: true,
+                url: '{% url 'questions:right_answer' %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    answer_id: answer_id
+                },
+
+                success: function (json) {
+                    console.log(json.message);
+                        location.reload();
+                    }
+                })
+            });
+        });
+
     function closeAnswerForm(id){
         document.getElementById(id + "_answer").innerHTML = "";
     }
+
     function prepareAnswerForm(id){
         closeAnswerForm(id);
         var answer = document.getElementById(id + "_answer");

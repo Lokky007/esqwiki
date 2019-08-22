@@ -3,5 +3,6 @@ from django.conf.urls import url
 from questions import views
 
 urlpatterns = [
-    url('', views.index),
+    url(r'^$', views.index),
+    url(r'rightAnswer/$', views.right_answer, name="right_answer"),
 ]

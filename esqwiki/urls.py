@@ -23,5 +23,6 @@ urlpatterns = [
     url('^forum/', include("forum.urls"), name='forum'),
     url('^map/', include("worldmap.urls"), name='worldmap'),
     url('^detail/', include('userGuildDetail.urls', namespace="userGuildDetail")),
+    url('^questions/', include('questions.urls', namespace="questions")),
 
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

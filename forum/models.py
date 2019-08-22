@@ -60,6 +60,7 @@ class Topic(models.Model):
 class Answer(models.Model):
     id_answer = models.AutoField(primary_key=True)
     text = models.CharField(blank=False, null=False, max_length=2048)
+    correct_answer = models.BooleanField(default=False)
     like = models.IntegerField(default=0)
     dislike = models.IntegerField(default=0)
     deleted = models.BooleanField(default=False)

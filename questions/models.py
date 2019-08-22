@@ -8,6 +8,8 @@ class questions(models.Model):
     id_question_post = models.AutoField(primary_key =True)
     id_question_post_parent = models.IntegerField(blank=True, null=True)
     text = models.CharField(max_length=2048)
+    is_answer = models.BooleanField(default=False)
+    is_resolved = models.BooleanField(default=False)
     deleted = models.BooleanField(default=0)
     x_created = models.DateTimeField(auto_now_add=True)
     x_modified = models.DateTimeField(auto_now=True)

@@ -55,7 +55,9 @@
                     <div id="{{ record.0.id_board_post}}_buySellComment" style="display:None;">
                         {% for answer in record.1 %}
                             <div class="">
-                                <span><b>{{ answer.text }}</b></span>
+                                <div>
+                                    <span><b>{{ answer.text }}</b></span>
+                                </div>
                                 <div class="opacity_05  d-inline-block float-right">
                                     <span class="float-right">{{ answer.x_created |date:"G:i j.n" }}</span>
                                     <span class="float-right"><b>{{ answer.x_user }}</b></span>
